@@ -28,7 +28,7 @@ class MenuVue extends JPanel {
 	
 	public MenuVue() {
 	    
-	    Font font = new Font("Courier", Font.BOLD,40);
+	    //Font font = new Font("Courier", Font.BOLD,40);
 	    
 	    this.carre = new JButton("Jouer");
 	    this.triangle = new JButton("Aléatoire");
