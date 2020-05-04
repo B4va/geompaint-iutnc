@@ -32,7 +32,7 @@ public class DessinControleur {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				/* A supprimer */
-				Caneva.getCaneva().setForme(Forme.RECTANGLE);
+				Caneva.getCaneva().setForme(Forme.TRIANGLE);
 				Caneva.getCaneva().setCouleur(Color.black);
 				/* Fin */
 				if (Caneva.getCaneva().getForme() != null) {
@@ -57,6 +57,7 @@ public class DessinControleur {
 						}
 						break;
 					case CERCLE :
+						/* Points de construction au centre ? */
 						if (ptsConst.size() == 2) {
 							Color c = Caneva.getCaneva().getCouleur();
 							UnCercle r = new UnCercle(ptsConst, c, true);
