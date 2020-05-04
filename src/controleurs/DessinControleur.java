@@ -35,6 +35,8 @@ public class DessinControleur {
 	 * Initialise le controleur
 	 */
 	public void init() {
+		vue.setFocusable(true);
+		vue.requestFocus();
 		vue.addMouseListener(new GestionnaireSouris());
 	}
 	
@@ -55,7 +57,12 @@ public class DessinControleur {
 			Caneva.getCaneva().setCouleur(Color.black);
 			/* Fin */
 			if (Caneva.getCaneva().getForme() != null) {
-				creerFigure(e);
+				if (e.getButton() == MouseEvent.BUTTON1) {					
+					creerFigure(e);
+				} else {
+					Caneva.getCaneva().getPointsConstruction().clear();
+					Caneva.getCaneva().display();
+				}
 			} else {
 				selectionnerFigure(e);
 			}
