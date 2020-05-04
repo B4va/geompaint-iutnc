@@ -22,10 +22,17 @@ public class DessinControleur {
 	
 	private DessinVue vue;
 	
+	/**
+	 * Crée le controleur en l'associant à la vue dédiée
+	 * @param vue
+	 */
 	public DessinControleur(DessinVue vue) {
 		this.vue = vue;
 	}
 	
+	/**
+	 * Initialise le controleur
+	 */
 	public void init() {
 		vue.addMouseListener(new MouseListener() {
 

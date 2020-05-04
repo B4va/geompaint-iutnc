@@ -53,7 +53,7 @@ public class DessinVue extends JPanel implements Observer {
 				if (f.isSelection()) tracerPointsSaisie(f);
 			}
 			for (UnPoint p : caneva.getPointsConstruction()) {
-				tracerPointConstruction(p);
+				tracerPointConstruction(p, g);
 			}
 		}
 	}
@@ -61,6 +61,7 @@ public class DessinVue extends JPanel implements Observer {
 	/**
 	 * Trace un cercle
 	 * @param c cercle à tracer
+	 * @param g outil graphique
 	 */
 	private void tracerCercle(UnCercle c, Graphics g) {
 		int width = c.getPointsMemoire().get(1).getX() - c.getPointsMemoire().get(0).getX();
@@ -72,6 +73,11 @@ public class DessinVue extends JPanel implements Observer {
 		}
 	}
 	
+	/**
+	 * Trace un rectangle
+	 * @param r rectangle à tracer
+	 * @param g outil graphique
+	 */
 	private void tracerRectangle(UnRectangle r, Graphics g) {
 		int width = r.getPointsMemoire().get(1).getX() - r.getPointsMemoire().get(0).getX();
 		int height = r.getPointsMemoire().get(1).getY() - r.getPointsMemoire().get(0).getY();
@@ -85,7 +91,8 @@ public class DessinVue extends JPanel implements Observer {
 	
 	/**
 	 * Trace un polygone
-	 * @param p polygone
+	 * @param p polygone à tracer
+	 * @param g outil graphique
 	 */
 	private void tracerPolygone(UnPolygone p, Graphics g) {
 		int nPoints = p.getPointsMemoire().size();
@@ -125,9 +132,9 @@ public class DessinVue extends JPanel implements Observer {
 	/**
 	 * Trace un point de consctruction
 	 * @param p point à tracer
+	 * @param g outil graphique
 	 */
-	private void tracerPointConstruction(UnPoint p) {
-		Graphics g = getGraphics();
+	private void tracerPointConstruction(UnPoint p, Graphics g) {
 		g.setColor(Color.GRAY);
 		g.fillRect(
 				p.getX() - TAILLE_POINTS / 2,
