@@ -1,6 +1,5 @@
 package modeles;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -12,11 +11,10 @@ public class UnCercle extends FigureGeom {
 
 	/**
 	 * Constructeur
-	 * @param couleur
-	 * @param plein
+	 * @param pointsConstruction points permettant de construire la figure
 	 */
-	public UnCercle(ArrayList<UnPoint> pointsConstruction, Color couleur, boolean plein) {
-		super(pointsConstruction, couleur, plein);
+	public UnCercle(ArrayList<UnPoint> pointsConstruction) {
+		super(pointsConstruction);
 	}
 	
 	@Override

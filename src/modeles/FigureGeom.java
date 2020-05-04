@@ -18,15 +18,14 @@ public abstract class FigureGeom {
 	
 	/**
 	 * Constructeur d'une figure géométrique
-	 * @param couleur
-	 * @param plein
+	 * @param pointsConstruction points permettant de construire la figure
 	 */
-	public FigureGeom(ArrayList<UnPoint> pointsConstruction, Color couleur, boolean plein) {
+	public FigureGeom(ArrayList<UnPoint> pointsConstruction) {
 		pointsMemoire = new ArrayList<UnPoint>();
 		for (UnPoint p : pointsConstruction) pointsMemoire.add(p);
 		iniPointsSaisie();
-		this.couleur = couleur;
-		this.plein = plein;
+		couleur = Caneva.getCaneva().getCouleur();
+		plein = true;
 		selection = true;
 	}
 	

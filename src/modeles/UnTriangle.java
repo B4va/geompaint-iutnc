@@ -1,6 +1,5 @@
 package modeles;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -12,12 +11,10 @@ public class UnTriangle extends UnPolygone {
 
 	/**
 	 * Constructeur
-	 * @param pointsConstruction
-	 * @param couleur
-	 * @param plein
+	 * @param pointsConstruction points permettant de construire la figure
 	 */
-	public UnTriangle(ArrayList<UnPoint> pointsConstruction, Color couleur, boolean plein) {
-		super(pointsConstruction, couleur, plein);
+	public UnTriangle(ArrayList<UnPoint> pointsConstruction) {
+		super(pointsConstruction);
 	}
 
 }

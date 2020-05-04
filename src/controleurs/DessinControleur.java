@@ -35,71 +35,95 @@ public class DessinControleur {
 	 * Initialise le controleur
 	 */
 	public void init() {
-		vue.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				/* A supprimer */
-				Caneva.getCaneva().setForme(Forme.POLYGONE);
-				Caneva.getCaneva().setCouleur(Color.black);
-				/* Fin */
-				if (Caneva.getCaneva().getForme() != null) {
-					ArrayList<UnPoint> ptsConst = Caneva.getCaneva().getPointsConstruction();
-					UnPoint p = new UnPoint(e.getX(), e.getY());
-					ptsConst.add(p);
-					switch (Caneva.getCaneva().getForme()) {
-					case RECTANGLE :
-						if (ptsConst.size() == 2) {
-							Color c = Caneva.getCaneva().getCouleur();
-							UnRectangle r = new UnRectangle(ptsConst, c, true);
-							Caneva.getCaneva().getFigures().add(r);
-							ptsConst.clear();
-						}
-						break;
-					case TRIANGLE :
-						if (ptsConst.size() == 3) {
-							Color c = Caneva.getCaneva().getCouleur();
-							UnTriangle r = new UnTriangle(ptsConst, c, true);
-							Caneva.getCaneva().getFigures().add(r);
-							ptsConst.clear();
-						}
-						break;
-					case CERCLE :
-						/* Points de construction au centre ? */
-						if (ptsConst.size() == 2) {
-							Color c = Caneva.getCaneva().getCouleur();
-							UnCercle r = new UnCercle(ptsConst, c, true);
-							Caneva.getCaneva().getFigures().add(r);
-							ptsConst.clear();
-						}
-						break;
-					case POLYGONE :
-						if (ptsConst.size() > 2 && DessinVue.superposition(p, ptsConst.get(0))) {
-							ptsConst.remove(p);
-							Color c = Caneva.getCaneva().getCouleur();
-							UnPolygone r = new UnPolygone(ptsConst, c, true);
-							Caneva.getCaneva().getFigures().add(r);
-							ptsConst.clear();
-						}
-						break;
-					}
-					Caneva.getCaneva().display();
+		vue.addMouseListener(new GestionnaireSouris());
+	}
+	
+	
+	/**
+	 * Gestionnaire des actions utilisateur réalisées à la souris
+	 *
+	 */
+	private static class GestionnaireSouris implements MouseListener{
+		
+		/**
+		 * Gère les clics souris
+		 */
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			/* A supprimer */
+			Caneva.getCaneva().setForme(Forme.POLYGONE);
+			Caneva.getCaneva().setCouleur(Color.black);
+			/* Fin */
+			if (Caneva.getCaneva().getForme() != null) {
+				creerFigure(e);
+			} else {
+				selectionnerFigure(e);
+			}
+		}
+		
+		/**
+		 * Crée une figure à partir des points saisis par l'utilisateur
+		 * @param e
+		 */
+		private void creerFigure(MouseEvent e) {
+			Caneva caneva = Caneva.getCaneva();
+			ArrayList<UnPoint> ptsConst = caneva.getPointsConstruction();
+			UnPoint p = new UnPoint(e.getX(), e.getY());
+			ptsConst.add(p);
+			switch (caneva.getForme()) {
+			case RECTANGLE :
+				if (ptsConst.size() == 2) {
+					UnRectangle r = new UnRectangle(ptsConst);
+					caneva.getFigures().add(r);
+					ptsConst.clear();
 				}
+				break;
+			case TRIANGLE :
+				if (ptsConst.size() == 3) {
+					UnTriangle r = new UnTriangle(ptsConst);
+					caneva.getFigures().add(r);
+					ptsConst.clear();
+				}
+				break;
+			case CERCLE :
+				/* Points de construction au centre ? */
+				if (ptsConst.size() == 2) {
+					UnCercle r = new UnCercle(ptsConst);
+					caneva.getFigures().add(r);
+					ptsConst.clear();
+				}
+				break;
+			case POLYGONE :
+				if (ptsConst.size() > 2 && DessinVue.superposition(p, ptsConst.get(0))) {
+					ptsConst.remove(p);
+					UnPolygone r = new UnPolygone(ptsConst);
+					caneva.getFigures().add(r);
+					ptsConst.clear();
+				}
+				break;
 			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-			}
-			@Override
-			public void mouseReleased(MouseEvent e) {
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {}
+			caneva.display();
+		}
+		
+		/**
+		 * Sélectionne la figure sur laquelle clique l'utilisateur
+		 * @param e
+		 */
+		private void selectionnerFigure(MouseEvent e) {
 			
-		});
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {}
 	}
 
 }
