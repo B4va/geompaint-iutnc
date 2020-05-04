@@ -9,7 +9,6 @@ import java.util.Observable;
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
-@SuppressWarnings("deprecation")
 public class Caneva extends Observable {
 	
 	private static Caneva CANEVA = new Caneva();
@@ -68,5 +67,9 @@ public class Caneva extends Observable {
 	
 	public void setForme(Forme f) {
 		forme = f;
+	}
+
+	public void setCouleur(Color c) {
+		couleur = c;
 	}
 }

@@ -18,7 +18,6 @@ public class UnRectangle extends UnPolygone {
 	 */
 	public UnRectangle(ArrayList<UnPoint> pointsConstruction, Color couleur, boolean plein) {
 		super(pointsConstruction, couleur, plein);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

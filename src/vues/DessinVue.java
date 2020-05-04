@@ -13,6 +13,7 @@ import modeles.FigureGeom;
 import modeles.UnCercle;
 import modeles.UnPoint;
 import modeles.UnPolygone;
+import modeles.UnRectangle;
 
 /**
  * Gestion de l'affichage l'interface de dessin
@@ -39,32 +40,46 @@ public class DessinVue extends JPanel implements Observer {
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for (FigureGeom f : caneva.getFigures()) {
-			g.setColor(f.getCouleur());
-			if (f instanceof UnCercle) {
-				tracerCercle((UnCercle)f);
-			} else {
-				tracerPolygone((UnPolygone)f);
+		if (caneva != null) {
+			for (FigureGeom f : caneva.getFigures()) {
+				g.setColor(f.getCouleur());
+				if (f instanceof UnCercle) {
+					tracerCercle((UnCercle)f, g);
+				} else if (f instanceof UnRectangle) {
+					tracerRectangle((UnRectangle)f, g);
+				} else {
+					tracerPolygone((UnPolygone)f, g);
+				}
+				if (f.isSelection()) tracerPointsSaisie(f);
 			}
-			if (f.isSelection()) tracerPointsSaisie(f);
-		}
-		for (UnPoint p : caneva.getPointsConstruction()) {
-			tracerPointConstruction(p);
+			for (UnPoint p : caneva.getPointsConstruction()) {
+				tracerPointConstruction(p);
+			}
 		}
 	}
 	
 	/**
 	 * Trace un cercle
-	 * @param f cercle à tracer
+	 * @param c cercle à tracer
 	 */
-	private void tracerCercle(UnCercle f) {
-		Graphics g = getGraphics();
-		int width = f.getPointsMemoire().get(1).getX() - f.getPointsMemoire().get(0).getX();
-		int height = f.getPointsMemoire().get(1).getY() - f.getPointsMemoire().get(0).getY();
-		if (f.isPlein()) {
-			g.fillOval(f.getPointsMemoire().get(0).getX(), f.getPointsMemoire().get(0).getY(), width, height);
+	private void tracerCercle(UnCercle c, Graphics g) {
+		int width = c.getPointsMemoire().get(1).getX() - c.getPointsMemoire().get(0).getX();
+		int height = c.getPointsMemoire().get(1).getY() - c.getPointsMemoire().get(0).getY();
+		if (c.isPlein()) {
+			g.fillOval(c.getPointsMemoire().get(0).getX(), c.getPointsMemoire().get(0).getY(), width, height);
 		} else {
-			g.drawOval(f.getPointsMemoire().get(0).getX(), f.getPointsMemoire().get(0).getY(), width, height);
+			g.drawOval(c.getPointsMemoire().get(0).getX(), c.getPointsMemoire().get(0).getY(), width, height);
+		}
+	}
+	
+	private void tracerRectangle(UnRectangle r, Graphics g) {
+		int width = r.getPointsMemoire().get(1).getX() - r.getPointsMemoire().get(0).getX();
+		int height = r.getPointsMemoire().get(1).getY() - r.getPointsMemoire().get(0).getY();
+		if (r.isPlein()) {
+			g.fillRect(r.getPointsMemoire().get(0).getX(), r.getPointsMemoire().get(0).getY(), width, height);
+			System.out.println("ok");
+		} else {
+			g.drawRect(r.getPointsMemoire().get(0).getX(), r.getPointsMemoire().get(0).getY(), width, height);
 		}
 	}
 	
@@ -72,8 +87,7 @@ public class DessinVue extends JPanel implements Observer {
 	 * Trace un polygone
 	 * @param p polygone
 	 */
-	private void tracerPolygone(UnPolygone p) {
-		Graphics g = getGraphics();
+	private void tracerPolygone(UnPolygone p, Graphics g) {
 		int nPoints = p.getPointsMemoire().size();
 		int[] xPoints = new int[nPoints];
 		int [] yPoints = new int[nPoints];
@@ -95,6 +109,7 @@ public class DessinVue extends JPanel implements Observer {
 	 * @param f figure sélectionnée
 	 */
 	private void tracerPointsSaisie(FigureGeom f) {
+		/*
 		Graphics g = getGraphics();
 		g.setColor(Color.GRAY);
 		for (UnPoint p : f.getPointsSaisie()) {			
@@ -104,6 +119,7 @@ public class DessinVue extends JPanel implements Observer {
 					TAILLE_POINTS, TAILLE_POINTS
 			);
 		}
+		*/
 	}
 	
 	/**
@@ -128,6 +144,7 @@ public class DessinVue extends JPanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		caneva = (Caneva) o;
+		repaint();
 	}
 
 }

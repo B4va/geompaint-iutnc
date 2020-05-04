@@ -20,7 +20,7 @@ public class Application {
 		// configure les paramètres généraux de la fenêtre
 			JFrame f = new JFrame();
 			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			f.setTitle("Eteins la lumière !");
+			f.setTitle("GéomPaint");
 			
 			// initialise les vues
 			DessinVue dVue = new DessinVue();
@@ -28,7 +28,6 @@ public class Application {
 			// initialise les modèles et associe ces derniers aux vues
 			Caneva caneva = Caneva.getCaneva();
 			caneva.addObserver(dVue);
-			caneva.display();
 			
 			// configure l'affichage
 			JPanel p = new JPanel();

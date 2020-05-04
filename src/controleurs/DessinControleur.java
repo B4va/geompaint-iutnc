@@ -31,8 +31,10 @@ public class DessinControleur {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				/* A supprimer */
 				Caneva.getCaneva().setForme(Forme.RECTANGLE);
-				System.out.println("ok");
+				Caneva.getCaneva().setCouleur(Color.black);
+				/* Fin */
 				if (Caneva.getCaneva().getForme() != null) {
 					ArrayList<UnPoint> ptsConst = Caneva.getCaneva().getPointsConstruction();
 					UnPoint p = new UnPoint(e.getX(), e.getY());
@@ -64,6 +66,7 @@ public class DessinControleur {
 						break;
 					case POLYGONE :
 						
+						ptsConst.clear();
 						break;
 					}
 					Caneva.getCaneva().display();

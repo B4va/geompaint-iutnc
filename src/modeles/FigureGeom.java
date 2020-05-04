@@ -22,7 +22,8 @@ public abstract class FigureGeom {
 	 * @param plein
 	 */
 	public FigureGeom(ArrayList<UnPoint> pointsConstruction, Color couleur, boolean plein) {
-		pointsMemoire = pointsConstruction;
+		pointsMemoire = new ArrayList<UnPoint>();
+		for (UnPoint p : pointsConstruction) pointsMemoire.add(p);
 		iniPointsSaisie();
 		this.couleur = couleur;
 		this.plein = plein;
