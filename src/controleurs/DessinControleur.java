@@ -9,6 +9,7 @@ import modeles.Caneva;
 import modeles.Forme;
 import modeles.UnCercle;
 import modeles.UnPoint;
+import modeles.UnPolygone;
 import modeles.UnRectangle;
 import modeles.UnTriangle;
 import vues.DessinVue;
@@ -39,7 +40,7 @@ public class DessinControleur {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				/* A supprimer */
-				Caneva.getCaneva().setForme(Forme.TRIANGLE);
+				Caneva.getCaneva().setForme(Forme.POLYGONE);
 				Caneva.getCaneva().setCouleur(Color.black);
 				/* Fin */
 				if (Caneva.getCaneva().getForme() != null) {
@@ -73,8 +74,13 @@ public class DessinControleur {
 						}
 						break;
 					case POLYGONE :
-						
-						ptsConst.clear();
+						if (ptsConst.size() > 2 && DessinVue.superposition(p, ptsConst.get(0))) {
+							ptsConst.remove(p);
+							Color c = Caneva.getCaneva().getCouleur();
+							UnPolygone r = new UnPolygone(ptsConst, c, true);
+							Caneva.getCaneva().getFigures().add(r);
+							ptsConst.clear();
+						}
 						break;
 					}
 					Caneva.getCaneva().display();

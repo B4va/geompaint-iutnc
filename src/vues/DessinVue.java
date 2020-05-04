@@ -23,6 +23,7 @@ import modeles.UnRectangle;
 public class DessinVue extends JPanel implements Observer {
 	
 	private static final int TAILLE_POINTS = 10;
+	private static final int TOLERANCE = 10;
 	public static final int LARGEUR = 800;
 	public static final int HAUTEUR = 800;
 	
@@ -152,6 +153,18 @@ public class DessinVue extends JPanel implements Observer {
 	public void update(Observable o, Object arg) {
 		caneva = (Caneva) o;
 		repaint();
+	}
+	
+	/**
+	 * Vérifie la superposition de deux points
+	 * @param p1 premier point
+	 * @param p2 second point
+	 * @return true si les points sont superposés
+	 */
+	public static boolean superposition(UnPoint p1, UnPoint p2) {
+		boolean x = Math.abs(p1.getX() - p2.getX()) < TOLERANCE;
+		boolean y = Math.abs(p1.getY() - p2.getY()) < TOLERANCE;
+		return x && y;
 	}
 
 }
