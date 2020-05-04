@@ -1,5 +1,6 @@
 package modeles;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -14,12 +15,15 @@ public class Caneva extends Observable {
 	private static Caneva CANEVA = new Caneva();
 	private ArrayList<FigureGeom> figures;
 	private ArrayList<UnPoint> pointsConstruction;
+	private Forme forme;
+	private Color couleur;
 
 	/**
 	 * Constructeur du singleton
 	 */
 	private Caneva() {
-		
+		figures = new ArrayList<FigureGeom>();
+		pointsConstruction = new ArrayList<UnPoint>();
 	}
 	
 	/**
@@ -31,6 +35,11 @@ public class Caneva extends Observable {
 			CANEVA = new Caneva();
 		}
 		return CANEVA;
+	}
+	
+	public void display() {
+		setChanged();
+		notifyObservers();
 	}
 	
 	/**
@@ -47,5 +56,17 @@ public class Caneva extends Observable {
 	 */
 	public ArrayList<UnPoint> getPointsConstruction() {
 		return pointsConstruction;
+	}
+	
+	public Forme getForme() {
+		return forme;
+	}
+	
+	public Color getCouleur() {
+		return couleur;
+	}
+	
+	public void setForme(Forme f) {
+		forme = f;
 	}
 }

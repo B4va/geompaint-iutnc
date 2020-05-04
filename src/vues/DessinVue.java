@@ -2,7 +2,6 @@ package vues;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,8 +13,6 @@ import modeles.FigureGeom;
 import modeles.UnCercle;
 import modeles.UnPoint;
 import modeles.UnPolygone;
-import modeles.UnRectange;
-import modeles.UnTriangle;
 
 /**
  * Gestion de l'affichage l'interface de dessin
@@ -25,6 +22,8 @@ import modeles.UnTriangle;
 public class DessinVue extends JPanel implements Observer {
 	
 	private static final int TAILLE_POINTS = 10;
+	public static final int LARGEUR = 800;
+	public static final int HAUTEUR = 800;
 	
 	private Caneva caneva;
 	
@@ -43,13 +42,13 @@ public class DessinVue extends JPanel implements Observer {
 		for (FigureGeom f : caneva.getFigures()) {
 			g.setColor(f.getCouleur());
 			if (f instanceof UnCercle) {
-				tracerCercle(f);
+				tracerCercle((UnCercle)f);
 			} else {
-				tracerPolygone(f);
+				tracerPolygone((UnPolygone)f);
 			}
 			if (f.isSelection()) tracerPointsSaisie(f);
 		}
-		for (UnPoint p : caneva.getPointsContruction()) {
+		for (UnPoint p : caneva.getPointsConstruction()) {
 			tracerPointConstruction(p);
 		}
 	}
