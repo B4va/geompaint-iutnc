@@ -1,5 +1,6 @@
 package vues;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Observable;
@@ -32,6 +33,7 @@ public class MenuVue extends JPanel implements Observer {
 	public MenuVue() {
 	    
 	    //Font font = new Font("Courier", Font.BOLD,40);
+		this.setBackground(Color.pink);
 	    
 	    this.carre = new JButton("Jouer");
 	    this.triangle = new JButton("Aléatoire");
