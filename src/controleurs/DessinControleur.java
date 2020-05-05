@@ -53,7 +53,7 @@ public class DessinControleur {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			/* A supprimer */
-			Caneva.getCaneva().setForme(Forme.POLYGONE);
+			Caneva.getCaneva().setForme(Forme.RECTANGLE);
 			Caneva.getCaneva().setCouleur(Color.black);
 			/* Fin */
 			if (Caneva.getCaneva().getForme() != null) {

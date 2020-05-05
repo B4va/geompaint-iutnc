@@ -46,8 +46,6 @@ public class DessinVue extends JPanel implements Observer {
 				g.setColor(f.getCouleur());
 				if (f instanceof UnCercle) {
 					tracerCercle((UnCercle)f, g);
-				} else if (f instanceof UnRectangle) {
-					tracerRectangle((UnRectangle)f, g);
 				} else {
 					tracerPolygone((UnPolygone)f, g);
 				}
@@ -71,22 +69,6 @@ public class DessinVue extends JPanel implements Observer {
 			g.fillOval(c.getPointsMemoire().get(0).getX(), c.getPointsMemoire().get(0).getY(), width, height);
 		} else {
 			g.drawOval(c.getPointsMemoire().get(0).getX(), c.getPointsMemoire().get(0).getY(), width, height);
-		}
-	}
-	
-	/**
-	 * Trace un rectangle
-	 * @param r rectangle à tracer
-	 * @param g outil graphique
-	 */
-	private void tracerRectangle(UnRectangle r, Graphics g) {
-		int width = r.getPointsMemoire().get(1).getX() - r.getPointsMemoire().get(0).getX();
-		int height = r.getPointsMemoire().get(1).getY() - r.getPointsMemoire().get(0).getY();
-		if (r.isPlein()) {
-			g.fillRect(r.getPointsMemoire().get(0).getX(), r.getPointsMemoire().get(0).getY(), width, height);
-			System.out.println("ok");
-		} else {
-			g.drawRect(r.getPointsMemoire().get(0).getX(), r.getPointsMemoire().get(0).getY(), width, height);
 		}
 	}
 	
