@@ -23,17 +23,17 @@ public class UnRectangle extends UnPolygone {
 	 */
 	protected void iniPointsMemoire() {
 		pointsMemoire = new ArrayList<>();
-		UnPoint a = pointsMemoire.get(0);
-		UnPoint b = pointsMemoire.get(1);
+		UnPoint a = pointsSaisie.get(0);
+		UnPoint b = pointsSaisie.get(1);
 		int xA = a.getX();
 		int yA = a.getY();
 		int xB = b.getX();
 		int yB = b.getY();
 		pointsMemoire.add(a);
 		// ajout du point haut-droite
-		pointsMemoire.add(new UnPoint((xA > xB) ? xA : xB, yA));
+		pointsMemoire.add(new UnPoint(xA > xB ? xA : xB, yA));
 		pointsMemoire.add(b);
 		// ajout du point bas-gauche
-		pointsMemoire.add(new UnPoint(xA, (yA > yB) ? yA : yB));	
+		pointsMemoire.add(new UnPoint(xA, yA > yB ? yA : yB));	
 	}
 }
