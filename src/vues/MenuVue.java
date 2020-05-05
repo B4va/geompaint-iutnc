@@ -1,6 +1,9 @@
 package vues;
+
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,7 +17,7 @@ import controleurs.MenuControleur;
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
-class MenuVue extends JPanel {
+public class MenuVue extends JPanel implements Observer {
 	/**
 	 * 
 	 */
@@ -94,6 +97,12 @@ class MenuVue extends JPanel {
 			default:
 				return null;
 		}
+		
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
 		
 	}
 	
