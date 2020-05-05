@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import modeles.Caneva;
 import vues.DessinVue;
+//import vues.MenuVue;
 
 /**
  * Classe exécutable
@@ -24,17 +25,17 @@ public class Application {
 			
 			// initialise les vues
 			DessinVue dVue = new DessinVue();
-			MenuVue mVue = new MenuVue();
+			//MenuVue mVue = new MenuVue();
 			
 			// initialise les modèles et associe ces derniers aux vues
 			Caneva caneva = Caneva.getCaneva();
 			caneva.addObserver(dVue);
-			caneva.addObserver(mVue);
+			//caneva.addObserver(mVue);
 			
 			// configure l'affichage
 			JPanel p = new JPanel();
 			p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
-			p.add(mVue);
+			//p.add(mVue);
 			p.add(dVue);
 			p.setPreferredSize(new Dimension(DessinVue.LARGEUR, DessinVue.HAUTEUR));
 			
