@@ -1,5 +1,6 @@
 package app;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
@@ -33,14 +34,32 @@ public class Application {
 			caneva.addObserver(mVue);
 			
 			// configure l'affichage
-			JPanel p = new JPanel();
-			p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
-			p.add(mVue);
-			p.add(dVue);
-			p.setPreferredSize(new Dimension(DessinVue.LARGEUR, DessinVue.HAUTEUR));
+			JPanel pMenu = new JPanel();
+			JPanel pDessin = new JPanel();
 			
+		    f.setLayout(new BorderLayout());
+		    /*
+		    //proposition d affichage plus simple
+		    dVue.setPreferredSize(new Dimension(dVue.LARGEUR, dVue.HAUTEUR));
+		    mVue.setPreferredSize(new Dimension(mVue.LARGEUR, mVue.HAUTEUR));
+			f.add(mVue,BorderLayout.WEST);
+		    f.add(dVue,BorderLayout.CENTER);
+			*/
+		    
+		    //pMenu.setLayout(new BoxLayout(pMenu, BoxLayout.Y_AXIS));
+			//pMenu.add(mVue);
+			//pMenu.setPreferredSize(new Dimension(MenuVue.LARGEUR, MenuVue.HAUTEUR));
+			
+		    pDessin.setLayout(new BoxLayout(pDessin, BoxLayout.Y_AXIS));
+			pDessin.add(dVue);
+			pDessin.setPreferredSize(new Dimension(DessinVue.LARGEUR, DessinVue.HAUTEUR));
+		    
 			// génère l'affichage
-			f.setContentPane(p);
+			//f.setContentPane(pMenu);
+			f.setContentPane(pDessin);
+			
+			
+		    
 			f.setVisible(true);
 			f.pack();		
 	}
