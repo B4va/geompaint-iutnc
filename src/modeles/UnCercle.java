@@ -23,8 +23,8 @@ public class UnCercle extends FigureGeom {
 	 */
 	protected void iniPointsMemoire() {
 		pointsMemoire = new ArrayList<>();
-		UnPoint a = pointsMemoire.get(0);
-		UnPoint b = pointsMemoire.get(1);
+		UnPoint a = pointsSaisie.get(0);
+		UnPoint b = pointsSaisie.get(1);
 		int xA = a.getX();
 		int yA = a.getY();
 		int xB = b.getX();
