@@ -40,20 +40,11 @@ public class MenuVue extends JPanel implements Observer {
 	private JButton modifier;
     private JComboBox listeCouleur;
 
-	
+    /**
+	 * Constructeur qui génére le menu de l'application.
+	 * */
 	public MenuVue() {
-		/*
-		ImageIcon imageIcon = new ImageIcon("img/carre.png");
-		Image image = imageIcon.getImage(); // transform it 
-		Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-		imageIcon = new ImageIcon(newimg);  // transform it back
-		
-		
-	    this.carre    = new JButton("Carre"   , imageIcon);
-	    this.triangle = new JButton("Triangle", new ImageIcon("img/triangle.png"));
-	    this.cercle   = new JButton("Cercle"  , new ImageIcon("img/cercle.png"));
-	    this.polygone = new JButton("Polygone", new ImageIcon("img/polygone.png"));
-	    */
+		//la liste des couleur de la JComboBox
 		Object[] elements = new Object[]{"Noir", "jaune", "vert", "bleu", "rouge","rose","gris","marron"};
 		
 		
@@ -65,7 +56,8 @@ public class MenuVue extends JPanel implements Observer {
 		
 		JLabel labelModification = new JLabel("Modification : ");
 		labelModification.setFont(font);
-				
+		
+	    //création des items
 		this.carre    = new JButton("Carre");
 	    this.triangle = new JButton("Triangle");
 	    this.cercle   = new JButton("Cercle");
@@ -74,6 +66,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.modifier = new JButton("Modifier");
 	    this.listeCouleur = new JComboBox(elements);
 	    
+	    //parametrage de la taille des items
 	    this.carre.setPreferredSize(new Dimension(200,50));
 	    this.triangle.setPreferredSize(new Dimension(200,50));
 	    this.cercle.setPreferredSize(new Dimension(200,50));
@@ -82,7 +75,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.modifier.setPreferredSize(new Dimension(200,50));
 	    this.listeCouleur.setPreferredSize(new Dimension(200,50));
 	    
-
+	    //ajout des items
 	    this.add(labelCreation);
 	    this.add(this.carre);
 	    this.add(this.triangle);
@@ -96,16 +89,22 @@ public class MenuVue extends JPanel implements Observer {
 	    this.setPreferredSize(new Dimension(LARGEUR,HAUTEUR));
 	}
 	
+	/**
+	 * Pérmet la récupération des événements de la vue, par le controller.
+	 * */
 	public void setButtonLister(MenuControleur controller) {
 		this.carre.addActionListener(controller);
 		this.triangle.addActionListener(controller);
 		this.cercle.addActionListener(controller);
 		this.polygone.addActionListener(controller);
 		this.modifier.addActionListener(controller);
-		this.listeCouleur.addActionListener(controller);
+		this.listeCouleur.addItemListener(controller);
 
 	}
-	
+	/**
+	 * Permet de déterminer quel bouton est le parametre @param button,
+	 * et retourne un numéro.
+	 * */
 	public int whoIsButton(Object button) {
 		if(button == this.carre) {
 			return 1;
@@ -133,7 +132,10 @@ public class MenuVue extends JPanel implements Observer {
 		
 		return -1;
 	}
-	
+	/**
+	 * Permet de déterminer quel numéro est le parametre @param button,
+	 * et retourne un bouton.
+	 * */
 	private JButton whoIsNumber(int button) {
 		switch(button) {
 			case 1:
@@ -156,33 +158,14 @@ public class MenuVue extends JPanel implements Observer {
 				
 			default:
 				return null;
-		}
-		
+		}	
 	}
-
+	/**
+	 * Permet de mettre à jour le caneva
+	 * */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	public class BoutonImage extends JButton { // !!! on doit étendre le composant dans lequel on veut insérer une image de fond
-	     
-	    private Image img;
-	     
-	    //Un constructeur pour choisir plus simplement l'image
-	    public BoutonImage(String imageName) {
-	        img = new ImageIcon(getClass().getResource(imageName)).getImage();
-	    }
-	     
-	    //On doit redéfinir la méthode paintComponent() pour les composant swing !!! et paint() pour awt
-	    @Override
-	    protected void paintComponent(Graphics g) {
-	        super.paintComponent(g);
-	        if (img == null) return;
-	        g.drawImage(img, 0, 0, getWidth(), getHeight(), this); //ici on adapte l'image à la taille du composant(getWidth(), getHeight())...
-	//cf : la documentation java à http://javasearch.developpez.com/j2se/1.6.0/docs/api/java/awt/Graphics.html#drawImage(java.awt.Image,%20int,%20int,%20int,%20int,%20java.awt.image.ImageObserver)
-	     
-	    }
 	}
 }
