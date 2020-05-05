@@ -23,6 +23,10 @@ public class UnCercle extends FigureGeom {
 	 */
 	protected void iniPointsSaisie() {
 		// modifier
-		pointsSaisie = null;
+		pointsSaisie = new ArrayList<>();
+		int xA = pointsMemoire.get(0).getX();
+		int yA = pointsMemoire.get(0).getY();
+		int xB = pointsMemoire.get(1).getX();
+		int yB = pointsMemoire.get(1).getY();
 	}
 }
