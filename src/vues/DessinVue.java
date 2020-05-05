@@ -13,7 +13,6 @@ import modeles.FigureGeom;
 import modeles.UnCercle;
 import modeles.UnPoint;
 import modeles.UnPolygone;
-import modeles.UnRectangle;
 
 /**
  * Gestion de l'affichage l'interface de dessin
@@ -49,7 +48,8 @@ public class DessinVue extends JPanel implements Observer {
 				} else {
 					tracerPolygone((UnPolygone)f, g);
 				}
-				if (f.isSelection()) tracerPointsSaisie(f);
+				FigureGeom selection = caneva.getSelection();
+				if (selection != null) tracerPointsMemoire(selection, g);
 			}
 			for (UnPoint p : caneva.getPointsConstruction()) {
 				tracerPointConstruction(p, g);
@@ -63,12 +63,11 @@ public class DessinVue extends JPanel implements Observer {
 	 * @param g outil graphique
 	 */
 	private void tracerCercle(UnCercle c, Graphics g) {
-		int width = c.getPointsMemoire().get(1).getX() - c.getPointsMemoire().get(0).getX();
-		int height = c.getPointsMemoire().get(1).getY() - c.getPointsMemoire().get(0).getY();
+		int rayon = Math.abs(c.getPointsMemoire().get(1).getX() - c.getPointsMemoire().get(0).getX());
 		if (c.isPlein()) {
-			g.fillOval(c.getPointsMemoire().get(0).getX(), c.getPointsMemoire().get(0).getY(), width, height);
+			g.fillOval(c.getPointsMemoire().get(0).getX() - rayon, c.getPointsMemoire().get(0).getY() - rayon, rayon * 2, rayon * 2);
 		} else {
-			g.drawOval(c.getPointsMemoire().get(0).getX(), c.getPointsMemoire().get(0).getY(), width, height);
+			g.drawOval(c.getPointsMemoire().get(0).getX() - rayon, c.getPointsMemoire().get(0).getY() - rayon, rayon * 2, rayon * 2);
 		}
 	}
 	
@@ -98,18 +97,15 @@ public class DessinVue extends JPanel implements Observer {
 	 * Trace les points de saisie d'une figure
 	 * @param f figure sélectionnée
 	 */
-	private void tracerPointsSaisie(FigureGeom f) {
-		/*
-		Graphics g = getGraphics();
+	private void tracerPointsMemoire(FigureGeom f, Graphics g) {
 		g.setColor(Color.GRAY);
-		for (UnPoint p : f.getPointsSaisie()) {			
+		for (UnPoint p : f.getPointsMemoire()) {			
 			g.fillRect(
 					p.getX() - TAILLE_POINTS / 2,
 					p.getY() - TAILLE_POINTS / 2, 
 					TAILLE_POINTS, TAILLE_POINTS
 			);
 		}
-		*/
 	}
 	
 	/**

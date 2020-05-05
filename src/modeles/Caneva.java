@@ -16,6 +16,7 @@ public class Caneva extends Observable {
 	private ArrayList<UnPoint> pointsConstruction;
 	private Forme forme;
 	private Color couleur;
+	private FigureGeom selection;
 
 	/**
 	 * Constructeur du singleton
@@ -65,11 +66,19 @@ public class Caneva extends Observable {
 		return couleur;
 	}
 	
+	public FigureGeom getSelection() {
+		return selection;
+	}
+	
 	public void setForme(Forme f) {
 		forme = f;
 	}
 
 	public void setCouleur(Color c) {
 		couleur = c;
+	}
+	
+	public void setSelection(FigureGeom f) {
+		selection = f;
 	}
 }

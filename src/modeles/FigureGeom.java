@@ -13,7 +13,6 @@ public abstract class FigureGeom {
 	protected ArrayList<UnPoint> pointsSaisie;
 	protected ArrayList<UnPoint> pointsMemoire;
 	protected Color couleur;
-	protected boolean selection;
 	protected boolean plein;
 	
 	/**
@@ -26,7 +25,6 @@ public abstract class FigureGeom {
 		iniPointsMemoire();
 		couleur = Caneva.getCaneva().getCouleur();
 		plein = true;
-		selection = true;
 	}
 	
 	/**
@@ -74,22 +72,6 @@ public abstract class FigureGeom {
 	 */
 	public void setCouleur(Color couleur) {
 		this.couleur = couleur;
-	}
-
-	/**
-	 * Getter de l'état de sélection
-	 * @return selection
-	 */
-	public boolean isSelection() {
-		return selection;
-	}
-
-	/**
-	 * Setter de l'état de sélection
-	 * @param selection
-	 */
-	public void setSelection(boolean selection) {
-		this.selection = selection;
 	}
 	
 	/**

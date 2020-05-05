@@ -53,7 +53,7 @@ public class DessinControleur {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			/* A supprimer */
-			Caneva.getCaneva().setForme(Forme.RECTANGLE);
+			Caneva.getCaneva().setForme(Forme.CERCLE);
 			Caneva.getCaneva().setCouleur(Color.black);
 			/* Fin */
 			if (Caneva.getCaneva().getForme() != null) {
@@ -83,29 +83,33 @@ public class DessinControleur {
 					UnRectangle r = new UnRectangle(ptsConst);
 					caneva.getFigures().add(r);
 					ptsConst.clear();
+					caneva.setSelection(r);
 				}
 				break;
 			case TRIANGLE :
 				if (ptsConst.size() == 3) {
-					UnTriangle r = new UnTriangle(ptsConst);
-					caneva.getFigures().add(r);
+					UnTriangle t = new UnTriangle(ptsConst);
+					caneva.getFigures().add(t);
 					ptsConst.clear();
+					caneva.setSelection(t);
 				}
 				break;
 			case CERCLE :
 				/* Points de construction au centre ? */
 				if (ptsConst.size() == 2) {
-					UnCercle r = new UnCercle(ptsConst);
-					caneva.getFigures().add(r);
+					UnCercle c = new UnCercle(ptsConst);
+					caneva.getFigures().add(c);
 					ptsConst.clear();
+					caneva.setSelection(c);
 				}
 				break;
 			case POLYGONE :
 				if (ptsConst.size() > 2 && DessinVue.superposition(p, ptsConst.get(0))) {
 					ptsConst.remove(p);
-					UnPolygone r = new UnPolygone(ptsConst);
-					caneva.getFigures().add(r);
+					UnPolygone po = new UnPolygone(ptsConst);
+					caneva.getFigures().add(po);
 					ptsConst.clear();
+					caneva.setSelection(po);
 				}
 				break;
 			}
