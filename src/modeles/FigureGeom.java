@@ -22,7 +22,7 @@ public abstract class FigureGeom {
 	 */
 	public FigureGeom(ArrayList<UnPoint> pointsConstruction) {
 		pointsSaisie = new ArrayList<UnPoint>();
-		for (UnPoint p : pointsConstruction) pointsMemoire.add(p);
+		for (UnPoint p : pointsConstruction) pointsSaisie.add(p);
 		iniPointsMemoire();
 		couleur = Caneva.getCaneva().getCouleur();
 		plein = true;
