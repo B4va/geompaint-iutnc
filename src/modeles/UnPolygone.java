@@ -19,10 +19,10 @@ public class UnPolygone extends FigureGeom {
 
 	@Override
 	/**
-	 * Enregistre les points de saisie
+	 * Enregistre les points de mémoire
 	 */
-	protected void iniPointsSaisie() {
-		pointsSaisie = pointsMemoire;
+	protected void iniPointsMemoire() {
+		pointsMemoire = pointsSaisie;
 	}
 
 }

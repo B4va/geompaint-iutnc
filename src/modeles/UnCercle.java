@@ -19,11 +19,11 @@ public class UnCercle extends FigureGeom {
 	
 	@Override
 	/**
-	 * Enregistre les points de saisie
+	 * Enregistre les points de mémoire
 	 */
-	protected void iniPointsSaisie() {
+	protected void iniPointsMemoire() {
 		// modifier
-		pointsSaisie = new ArrayList<>();
+		pointsMemoire = new ArrayList<>();
 		int xA = pointsMemoire.get(0).getX();
 		int yA = pointsMemoire.get(0).getY();
 		int xB = pointsMemoire.get(1).getX();

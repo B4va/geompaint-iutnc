@@ -21,9 +21,9 @@ public abstract class FigureGeom {
 	 * @param pointsConstruction points permettant de construire la figure
 	 */
 	public FigureGeom(ArrayList<UnPoint> pointsConstruction) {
-		pointsMemoire = new ArrayList<UnPoint>();
+		pointsSaisie = new ArrayList<UnPoint>();
 		for (UnPoint p : pointsConstruction) pointsMemoire.add(p);
-		iniPointsSaisie();
+		iniPointsMemoire();
 		couleur = Caneva.getCaneva().getCouleur();
 		plein = true;
 		selection = true;
@@ -40,9 +40,9 @@ public abstract class FigureGeom {
 	}
 
 	/**
-	 * Enregistre les points de saisie
+	 * Enregistre les points de mémoire
 	 */
-	abstract protected void iniPointsSaisie();
+	abstract protected void iniPointsMemoire();
 	
 	/**
 	 * Getter de la liste de points de saisie
