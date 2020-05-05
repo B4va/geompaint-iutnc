@@ -30,9 +30,9 @@ public class UnRectangle extends UnPolygone {
 		int xB = b.getX();
 		int yB = b.getY();
 		pointsMemoire.add(a);
-		pointsMemoire.add(b);
 		// ajout du point haut-droite
 		pointsMemoire.add(new UnPoint((xA > xB) ? xA : xB, yA));
+		pointsMemoire.add(b);
 		// ajout du point bas-gauche
 		pointsMemoire.add(new UnPoint(xA, (yA > yB) ? yA : yB));	
 	}
