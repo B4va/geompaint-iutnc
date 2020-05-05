@@ -22,11 +22,15 @@ public class UnCercle extends FigureGeom {
 	 * Enregistre les points de mémoire
 	 */
 	protected void iniPointsMemoire() {
-		// modifier
 		pointsMemoire = new ArrayList<>();
-		int xA = pointsMemoire.get(0).getX();
-		int yA = pointsMemoire.get(0).getY();
-		int xB = pointsMemoire.get(1).getX();
-		int yB = pointsMemoire.get(1).getY();
+		UnPoint a = pointsMemoire.get(0);
+		UnPoint b = pointsMemoire.get(1);
+		int xA = a.getX();
+		int yA = a.getY();
+		int xB = b.getX();
+		int yB = b.getY();
+		int dist = (int)Math.sqrt((xB-xA)*(xB-xA) + (yB-yA)*(yB-yA));
+		pointsMemoire.add(a);
+		pointsMemoire.add(new UnPoint(xA+dist, yA));
 	}
 }

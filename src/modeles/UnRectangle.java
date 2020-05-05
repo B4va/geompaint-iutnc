@@ -22,12 +22,15 @@ public class UnRectangle extends UnPolygone {
 	 * Enregistre les points de mémoire
 	 */
 	protected void iniPointsMemoire() {
-		// modifier
 		pointsMemoire = new ArrayList<>();
-		int xA = pointsMemoire.get(0).getX();
-		int yA = pointsMemoire.get(0).getY();
-		int xB = pointsMemoire.get(1).getX();
-		int yB = pointsMemoire.get(1).getY();
+		UnPoint a = pointsMemoire.get(0);
+		UnPoint b = pointsMemoire.get(1);
+		int xA = a.getX();
+		int yA = a.getY();
+		int xB = b.getX();
+		int yB = b.getY();
+		pointsMemoire.add(a);
+		pointsMemoire.add(b);
 		// ajout du point haut-droite
 		pointsMemoire.add(new UnPoint((xA > xB) ? xA : xB, yA));
 		// ajout du point bas-gauche
