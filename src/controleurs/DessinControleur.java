@@ -3,6 +3,7 @@ package controleurs;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import modeles.Caneva;
@@ -21,6 +22,7 @@ import vues.DessinVue;
  */
 public class DessinControleur {
 	
+	private static boolean creation;
 	private DessinVue vue;
 	
 	/**
@@ -38,6 +40,7 @@ public class DessinControleur {
 		vue.setFocusable(true);
 		vue.requestFocus();
 		vue.addMouseListener(new GestionnaireSouris());
+		vue.addMouseMotionListener(new GestionnaireMouvement());
 	}
 	
 	
@@ -53,7 +56,7 @@ public class DessinControleur {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			/* A supprimer */
-			Caneva.getCaneva().setForme(Forme.CERCLE);
+			Caneva.getCaneva().setForme(Forme.RECTANGLE);
 			Caneva.getCaneva().setCouleur(Color.black);
 			/* Fin */
 			if (Caneva.getCaneva().getForme() != null) {
@@ -84,6 +87,10 @@ public class DessinControleur {
 					caneva.getFigures().add(r);
 					ptsConst.clear();
 					caneva.setSelection(r);
+					creation = false;
+					caneva.setFigureConstruction(null);
+				} else {
+					creation = true;
 				}
 				break;
 			case TRIANGLE :
@@ -92,6 +99,10 @@ public class DessinControleur {
 					caneva.getFigures().add(t);
 					ptsConst.clear();
 					caneva.setSelection(t);
+					creation = false;
+					caneva.setFigureConstruction(null);
+				} else {
+					creation = true;
 				}
 				break;
 			case CERCLE :
@@ -101,6 +112,10 @@ public class DessinControleur {
 					caneva.getFigures().add(c);
 					ptsConst.clear();
 					caneva.setSelection(c);
+					creation = false;
+					caneva.setFigureConstruction(null);
+				} else {
+					creation = true;
 				}
 				break;
 			case POLYGONE :
@@ -110,6 +125,10 @@ public class DessinControleur {
 					caneva.getFigures().add(po);
 					ptsConst.clear();
 					caneva.setSelection(po);
+					creation = false;
+					caneva.setFigureConstruction(null);
+				} else {
+					creation = true;
 				}
 				break;
 			}
@@ -135,6 +154,52 @@ public class DessinControleur {
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {}
+	}
+	
+	private static class GestionnaireMouvement implements MouseMotionListener {
+
+		@Override
+		public void mouseDragged(MouseEvent e) {
+
+		}
+
+		@Override
+		public void mouseMoved(MouseEvent e) {
+			if (creation) {
+				Caneva caneva = Caneva.getCaneva();
+				ArrayList<UnPoint> ptsConst = caneva.getPointsConstruction();
+				ArrayList<UnPoint> arr = new ArrayList<UnPoint>();
+				switch (caneva.getForme()) {
+				case RECTANGLE : 					
+					arr.add(ptsConst.get(0));
+					arr.add(new UnPoint(e.getX(), e.getY()));
+					caneva.setFigureConstruction(new UnRectangle(arr));
+					break;
+				case TRIANGLE :
+					if (ptsConst.size() == 2) {
+						arr.add(ptsConst.get(0));
+						arr.add(ptsConst.get(1));
+						arr.add(new UnPoint(e.getX(), e.getY()));
+						caneva.setFigureConstruction(new UnTriangle(arr));
+					}
+					break;
+				case CERCLE :
+					arr.add(ptsConst.get(0));
+					arr.add(new UnPoint(e.getX(), e.getY()));
+					caneva.setFigureConstruction(new UnCercle(arr));
+					break;
+				case POLYGONE :
+					if (ptsConst.size() >= 2) {
+						for(UnPoint p : ptsConst) arr.add(p);
+						arr.add(new UnPoint(e.getX(), e.getY()));
+						caneva.setFigureConstruction(new UnPolygone(arr));
+					}
+					break;
+				}
+				caneva.display();
+			}
+		}
+		
 	}
 
 }

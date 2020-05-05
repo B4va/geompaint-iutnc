@@ -14,6 +14,7 @@ public class Caneva extends Observable {
 	private static Caneva CANEVA = new Caneva();
 	private ArrayList<FigureGeom> figures;
 	private ArrayList<UnPoint> pointsConstruction;
+	private FigureGeom figureConstruction;
 	private Forme forme;
 	private Color couleur;
 	private FigureGeom selection;
@@ -70,6 +71,10 @@ public class Caneva extends Observable {
 		return selection;
 	}
 	
+	public FigureGeom getFigureConstruction() {
+		return figureConstruction;
+	}
+	
 	public void setForme(Forme f) {
 		forme = f;
 	}
@@ -80,5 +85,9 @@ public class Caneva extends Observable {
 	
 	public void setSelection(FigureGeom f) {
 		selection = f;
+	}
+	
+	public void setFigureConstruction(FigureGeom f) {
+		figureConstruction = f;
 	}
 }

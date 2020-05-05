@@ -13,6 +13,7 @@ import modeles.FigureGeom;
 import modeles.UnCercle;
 import modeles.UnPoint;
 import modeles.UnPolygone;
+import modeles.UnRectangle;
 
 /**
  * Gestion de l'affichage l'interface de dessin
@@ -48,8 +49,17 @@ public class DessinVue extends JPanel implements Observer {
 				} else {
 					tracerPolygone((UnPolygone)f, g);
 				}
-				FigureGeom selection = caneva.getSelection();
-				if (selection != null) tracerPointsMemoire(selection, g);
+			}
+			FigureGeom selection = caneva.getSelection();
+			if (selection != null) tracerPointsMemoire(selection, g);
+			FigureGeom figureConstr = caneva.getFigureConstruction();
+			g.setColor(Color.LIGHT_GRAY);
+			if (figureConstr != null) {
+				if (figureConstr instanceof UnCercle) {
+					tracerCercle((UnCercle)figureConstr, g);
+				} else {
+					tracerPolygone((UnPolygone)figureConstr, g);
+				}
 			}
 			for (UnPoint p : caneva.getPointsConstruction()) {
 				tracerPointConstruction(p, g);
