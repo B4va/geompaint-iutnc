@@ -25,7 +25,6 @@ public class DessinVue extends JPanel implements Observer {
 	private static final int TAILLE_POINTS = 10;
 	private static final int TOLERANCE = 10;
 	public static final int LARGEUR = 800;
-	public static final int HAUTEUR = 800;
 	
 	private Caneva caneva;
 	

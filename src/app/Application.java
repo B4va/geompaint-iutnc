@@ -1,6 +1,7 @@
 package app;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
@@ -22,30 +23,31 @@ public class Application {
 
 	public static void main(String[] args) {
 		// configure les paramètres généraux de la fenêtre
-			JFrame f = new JFrame();
-			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			f.setTitle("GéomPaint");
-			
-			// initialise les vues
-			DessinVue dVue = new DessinVue();
-			MenuVue mVue = new MenuVue();
-			
-			// initialise les modèles et les associe aux vues
-			Caneva caneva = Caneva.getCaneva();
-			caneva.addObserver(dVue);
-			caneva.addObserver(mVue);
-			
-			// génère l'affichage
-			JPanel p = new JPanel();
-		    p.setPreferredSize(new Dimension(MenuVue.LARGEUR + DessinVue.LARGEUR, HAUTEUR));
-			f.setContentPane(p);		    		
-			f.setVisible(true);
-			f.pack();
-			p.setLayout(new BorderLayout());
-		    p.add(mVue, BorderLayout.WEST);
-		    p.add(dVue, BorderLayout.EAST);
-		    mVue.setPreferredSize(new Dimension(MenuVue.LARGEUR, HAUTEUR));
-		    mVue.setMaximumSize(new Dimension(MenuVue.LARGEUR, dVue.getHeight()));
-		    mVue.setMinimumSize(new Dimension(MenuVue.LARGEUR, dVue.getHeight()));
+		JFrame f = new JFrame();
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setTitle("GéomPaint");
+		
+		// initialise les vues
+		DessinVue dVue = new DessinVue();
+		MenuVue mVue = new MenuVue();
+		
+		// initialise les modèles et les associe aux vues
+		Caneva caneva = Caneva.getCaneva();
+		caneva.addObserver(dVue);
+		caneva.addObserver(mVue);
+		
+		// configure l'affichage
+		JPanel p = new JPanel();
+		p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
+		p.add(mVue);
+		p.add(dVue);
+		p.setPreferredSize(new Dimension(MenuVue.LARGEUR + DessinVue.LARGEUR, HAUTEUR));
+		mVue.setPreferredSize(new Dimension(MenuVue.LARGEUR, HAUTEUR));
+		dVue.setPreferredSize(new Dimension(DessinVue.LARGEUR, HAUTEUR));
+		
+		// génère l'affichage
+		f.setContentPane(p);
+		f.setVisible(true);
+		f.pack();	
 	}
 }

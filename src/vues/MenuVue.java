@@ -29,7 +29,6 @@ public class MenuVue extends JPanel implements Observer {
 	private static final long serialVersionUID = 1L;
 	
 	public static final int LARGEUR = 220;
-	public static final int HAUTEUR = 800;
 	
 	
 	private JButton carre;
@@ -44,6 +43,7 @@ public class MenuVue extends JPanel implements Observer {
 	 * Constructeur qui génére le menu de l'application.
 	 * */
 	public MenuVue() {
+		
 		//la liste des couleur de la JComboBox
 		Object[] elements = new Object[]{"Noir", "jaune", "vert", "bleu", "rouge","rose","gris","marron"};
 		
@@ -86,8 +86,6 @@ public class MenuVue extends JPanel implements Observer {
 	    this.add(this.selection);
 	    this.add(this.plein);
 	    this.add(this.listeCouleur);
-	    
-	    this.setPreferredSize(new Dimension(LARGEUR,HAUTEUR));
 	    MenuControleur controleur = new MenuControleur(this);
 	}
 	

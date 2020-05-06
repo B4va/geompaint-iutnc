@@ -39,7 +39,6 @@ public class DessinControleur {
 		vue.addMouseMotionListener(new GestionnaireMouvement());
 	}
 	
-	
 	/**
 	 * Gestionnaire des actions utilisateur réalisées à la souris
 	 *
@@ -81,7 +80,6 @@ public class DessinControleur {
 					UnRectangle r = new UnRectangle(ptsConst);
 					caneva.getFigures().add(r);
 					ptsConst.clear();
-					caneva.setSelection(r);
 					creation = false;
 					caneva.setFigureConstruction(null);
 				} else {
@@ -93,7 +91,6 @@ public class DessinControleur {
 					UnTriangle t = new UnTriangle(ptsConst);
 					caneva.getFigures().add(t);
 					ptsConst.clear();
-					caneva.setSelection(t);
 					creation = false;
 					caneva.setFigureConstruction(null);
 				} else {
@@ -106,7 +103,6 @@ public class DessinControleur {
 					UnCercle c = new UnCercle(ptsConst);
 					caneva.getFigures().add(c);
 					ptsConst.clear();
-					caneva.setSelection(c);
 					creation = false;
 					caneva.setFigureConstruction(null);
 				} else {
@@ -119,7 +115,6 @@ public class DessinControleur {
 					UnPolygone po = new UnPolygone(ptsConst);
 					caneva.getFigures().add(po);
 					ptsConst.clear();
-					caneva.setSelection(po);
 					creation = false;
 					caneva.setFigureConstruction(null);
 				} else {

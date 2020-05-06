@@ -1,6 +1,7 @@
 package controleurs;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -11,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import app.Application;
 import modeles.Caneva;
 import modeles.Forme;
 import vues.MenuVue;
@@ -146,6 +148,8 @@ import vues.MenuVue;
 			default ://noir par défaut
 				can.setCouleur(Color.BLACK);
 			}
-			
+			if (can.getSelection() != null) {
+				can.display();
+			}
 		}		
  }
