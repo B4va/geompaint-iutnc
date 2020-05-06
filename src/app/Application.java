@@ -17,6 +17,8 @@ import vues.MenuVue;
  *
  */
 public class Application {
+	
+	public static final int HAUTEUR = 800;
 
 	public static void main(String[] args) {
 		// configure les paramètres généraux de la fenêtre
@@ -28,39 +30,22 @@ public class Application {
 			DessinVue dVue = new DessinVue();
 			MenuVue mVue = new MenuVue();
 			
-			// initialise les modèles et associe ces derniers aux vues
+			// initialise les modèles et les associe aux vues
 			Caneva caneva = Caneva.getCaneva();
 			caneva.addObserver(dVue);
 			caneva.addObserver(mVue);
 			
-			// configure l'affichage
-			JPanel pMenu = new JPanel();
-			JPanel pDessin = new JPanel();
-			
-		    f.setLayout(new BorderLayout());
-		    /*
-		    //proposition d affichage plus simple
-		    dVue.setPreferredSize(new Dimension(dVue.LARGEUR, dVue.HAUTEUR));
-		    mVue.setPreferredSize(new Dimension(mVue.LARGEUR, mVue.HAUTEUR));
-			f.add(mVue,BorderLayout.WEST);
-		    f.add(dVue,BorderLayout.CENTER);
-			*/
-		    
-		    //pMenu.setLayout(new BoxLayout(pMenu, BoxLayout.Y_AXIS));
-			//pMenu.add(mVue);
-			//pMenu.setPreferredSize(new Dimension(MenuVue.LARGEUR, MenuVue.HAUTEUR));
-			
-		    pDessin.setLayout(new BoxLayout(pDessin, BoxLayout.Y_AXIS));
-			pDessin.add(dVue);
-			pDessin.setPreferredSize(new Dimension(DessinVue.LARGEUR, DessinVue.HAUTEUR));
-		    
 			// génère l'affichage
-			//f.setContentPane(pMenu);
-			f.setContentPane(pDessin);
-			
-			
-		    
+			JPanel p = new JPanel();
+		    p.setPreferredSize(new Dimension(MenuVue.LARGEUR + DessinVue.LARGEUR, HAUTEUR));
+			f.setContentPane(p);		    		
 			f.setVisible(true);
-			f.pack();		
+			f.pack();
+			p.setLayout(new BorderLayout());
+		    p.add(mVue, BorderLayout.WEST);
+		    p.add(dVue, BorderLayout.EAST);
+		    mVue.setPreferredSize(new Dimension(MenuVue.LARGEUR, HAUTEUR));
+		    mVue.setMaximumSize(new Dimension(MenuVue.LARGEUR, dVue.getHeight()));
+		    mVue.setMinimumSize(new Dimension(MenuVue.LARGEUR, dVue.getHeight()));
 	}
 }

@@ -29,7 +29,7 @@ public class MenuVue extends JPanel implements Observer {
 	private static final long serialVersionUID = 1L;
 	
 	public static final int LARGEUR = 220;
-	public static final int HAUTEUR = 500;
+	public static final int HAUTEUR = 800;
 	
 	
 	private JButton carre;
