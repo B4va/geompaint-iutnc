@@ -74,6 +74,12 @@ import vues.MenuVue;
 						can.getSelection().setPlein(!can.getSelection().isPlein());
 					}
 					break;
+					
+				case 7://effacer
+					can.clearFigures();
+					can.setForme(null);
+					can.display();
+					break;
 			}
 		}
 		/**

@@ -51,7 +51,13 @@ public class Caneva extends Observable {
 	public ArrayList<FigureGeom> getFigures() {
 		return figures;
 	}
-	
+	/**
+	 * efface toutes les figures géom de la liste
+	 * 
+	 */
+	public void clearFigures() {
+		figures = new ArrayList<FigureGeom>();
+	}
 	/**
 	 * Getter de la liste de points de construction
 	 * @return figures

@@ -37,6 +37,7 @@ public class MenuVue extends JPanel implements Observer {
 	private JButton polygone;
 	private JButton plein;
 	private JButton selection;
+	private JButton effacer;
     private JComboBox listeCouleur;
 
     /**
@@ -45,7 +46,7 @@ public class MenuVue extends JPanel implements Observer {
 	public MenuVue() {
 		
 		//la liste des couleur de la JComboBox
-		Object[] elements = new Object[]{"Noir", "jaune", "vert", "bleu", "rouge","rose","gris","marron"};
+		Object[] elements = new Object[]{"Noir", "jaune", "vert", "bleu", "rouge","rose","gris","gris foncé"};
 		
 		
 		this.setBackground(Color.pink);
@@ -64,6 +65,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.polygone = new JButton("Polygone");
 	    this.selection = new JButton("Selectionner");
 	    this.plein = new JButton("Plein");
+	    this.effacer = new JButton("Effacer");
 	    
 	    this.listeCouleur = new JComboBox(elements);
 	    
@@ -75,7 +77,8 @@ public class MenuVue extends JPanel implements Observer {
 	    this.plein.setPreferredSize(new Dimension(200,50));
 	    this.selection.setPreferredSize(new Dimension(200,50));
 	    this.listeCouleur.setPreferredSize(new Dimension(200,50));
-	    
+	    this.effacer.setPreferredSize(new Dimension(200,50));
+
 	    //ajout des items
 	    this.add(labelCreation);
 	    this.add(this.carre);
@@ -85,6 +88,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.add(labelModification);
 	    this.add(this.selection);
 	    this.add(this.plein);
+	    this.add(this.effacer);
 	    this.add(this.listeCouleur);
 	    MenuControleur controleur = new MenuControleur(this);
 	}
@@ -99,6 +103,7 @@ public class MenuVue extends JPanel implements Observer {
 		this.polygone.addActionListener(controller);
 		this.selection.addActionListener(controller);
 		this.listeCouleur.addItemListener(controller);
+		this.effacer.addActionListener(controller);
 
 	}
 	/**
@@ -130,6 +135,10 @@ public class MenuVue extends JPanel implements Observer {
 			return 6;
 		}
 		
+		if(button == this.effacer) {
+			return 7;
+		}
+		
 		return -1;
 	}
 	/**
@@ -155,6 +164,9 @@ public class MenuVue extends JPanel implements Observer {
 				
 			case 6:
 				return this.selection;
+			
+			case 7:
+				return this.effacer;
 				
 			default:
 				return null;
