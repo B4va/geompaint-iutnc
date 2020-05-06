@@ -88,6 +88,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.add(this.listeCouleur);
 	    
 	    this.setPreferredSize(new Dimension(LARGEUR,HAUTEUR));
+	    MenuControleur controleur = new MenuControleur(this);
 	}
 	
 	/**

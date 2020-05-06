@@ -97,6 +97,7 @@ import vues.MenuVue;
 				if(can.getSelection() != null) {
 					can.getSelection().setCouleur(Color.YELLOW);
 				}
+
 				can.setCouleur(Color.YELLOW);
 				break;
 				
