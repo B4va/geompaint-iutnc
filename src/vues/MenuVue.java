@@ -36,8 +36,8 @@ public class MenuVue extends JPanel implements Observer {
 	private JButton triangle;
 	private JButton cercle;
 	private JButton polygone;
-	private JButton translater;
-	private JButton modifier;
+	private JButton plein;
+	private JButton selection;
     private JComboBox listeCouleur;
 
     /**
@@ -62,8 +62,9 @@ public class MenuVue extends JPanel implements Observer {
 	    this.triangle = new JButton("Triangle");
 	    this.cercle   = new JButton("Cercle");
 	    this.polygone = new JButton("Polygone");
-	    this.translater = new JButton("Translater");
-	    this.modifier = new JButton("Modifier");
+	    this.selection = new JButton("Selectionner");
+	    this.plein = new JButton("Plein");
+	    
 	    this.listeCouleur = new JComboBox(elements);
 	    
 	    //parametrage de la taille des items
@@ -71,8 +72,8 @@ public class MenuVue extends JPanel implements Observer {
 	    this.triangle.setPreferredSize(new Dimension(200,50));
 	    this.cercle.setPreferredSize(new Dimension(200,50));
 	    this.polygone.setPreferredSize(new Dimension(200,50));
-	    this.translater.setPreferredSize(new Dimension(200,50));
-	    this.modifier.setPreferredSize(new Dimension(200,50));
+	    this.plein.setPreferredSize(new Dimension(200,50));
+	    this.selection.setPreferredSize(new Dimension(200,50));
 	    this.listeCouleur.setPreferredSize(new Dimension(200,50));
 	    
 	    //ajout des items
@@ -82,8 +83,8 @@ public class MenuVue extends JPanel implements Observer {
 	    this.add(this.cercle);
 	    this.add(this.polygone);
 	    this.add(labelModification);
-	    this.add(this.translater);
-	    this.add(this.modifier);
+	    this.add(this.selection);
+	    this.add(this.plein);
 	    this.add(this.listeCouleur);
 	    
 	    this.setPreferredSize(new Dimension(LARGEUR,HAUTEUR));
@@ -97,7 +98,7 @@ public class MenuVue extends JPanel implements Observer {
 		this.triangle.addActionListener(controller);
 		this.cercle.addActionListener(controller);
 		this.polygone.addActionListener(controller);
-		this.modifier.addActionListener(controller);
+		this.selection.addActionListener(controller);
 		this.listeCouleur.addItemListener(controller);
 
 	}
@@ -122,11 +123,11 @@ public class MenuVue extends JPanel implements Observer {
 			return 4;
 		}
 		
-		if(button == this.translater) {
+		if(button == this.plein) {
 			return 5;
 		}
 		
-		if(button == this.modifier) {
+		if(button == this.selection) {
 			return 6;
 		}
 		
@@ -151,10 +152,10 @@ public class MenuVue extends JPanel implements Observer {
 				return this.polygone;
 				
 			case 5:
-				return this.translater;
+				return this.plein;
 				
 			case 6:
-				return this.modifier;
+				return this.selection;
 				
 			default:
 				return null;

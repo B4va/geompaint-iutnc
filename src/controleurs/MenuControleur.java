@@ -67,8 +67,10 @@ import vues.MenuVue;
 					can.setForme(null);
 					break;
 					
-				case 6://modifier
-					
+				case 6://plein
+					if(can.getSelection() != null) {
+						can.getSelection().setPlein(!can.getSelection().isPlein());
+					}
 					break;
 			}
 		}
@@ -92,35 +94,56 @@ import vues.MenuVue;
 				break;
 				
 			case 1 ://jaune
-
+				if(can.getSelection() != null) {
+					can.getSelection().setCouleur(Color.YELLOW);
+				}
+				can.setCouleur(Color.YELLOW);
 				break;
 				
 			case 2 ://vert
-
+				if(can.getSelection() != null) {
+					can.getSelection().setCouleur(Color.GREEN);
+				}
+				can.setCouleur(Color.GREEN);
 				break;
 					
 			case 3 ://bleu
-
+				if(can.getSelection() != null) {
+					can.getSelection().setCouleur(Color.BLUE);
+				}
+				can.setCouleur(Color.BLUE);
 				break;
 			
 			case 4 ://rouge
-
+				if(can.getSelection() != null) {
+					can.getSelection().setCouleur(Color.RED);
+				}
+				can.setCouleur(Color.RED);
 				break;
 				
 			case 5 ://rose
-
+				if(can.getSelection() != null) {
+					can.getSelection().setCouleur(Color.PINK);
+				}
+				can.setCouleur(Color.PINK);
 				break;
 				
 			case 6 ://gris
-
+				if(can.getSelection() != null) {
+					can.getSelection().setCouleur(Color.GRAY);
+				}
+				can.setCouleur(Color.GRAY);
 				break;
 				
 			case 7 ://gris foncé
-
+				if(can.getSelection() != null) {
+					can.getSelection().setCouleur(Color.DARK_GRAY);
+				}
+				can.setCouleur(Color.DARK_GRAY);
 				break;
 				
 			default ://noir par défaut
-
+				can.setCouleur(Color.BLACK);
 			}
 			
 		}		
