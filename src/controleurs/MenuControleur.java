@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import modeles.Caneva;
+import modeles.Forme;
 import vues.MenuVue;
 
 /**
@@ -21,17 +22,15 @@ import vues.MenuVue;
  */
  public class MenuControleur implements ActionListener, ItemListener {
 	 	private MenuVue menu;
-		private Caneva caneva;
 		
 		/**
 		 * Constructeur qui permet d'initialiser:
 		 * @param unMenu pour la vue traitée par cette classe,
 		 * @param unCaneva pour lier les actions au Caneva de l'application
 		 * */
-		public MenuControleur(MenuVue unMenu,Caneva unCaneva){
+		public MenuControleur(MenuVue unMenu){
 			this.menu = unMenu;
-			this.caneva = unCaneva;
-			this.menu.setButtonLister(this);
+			this.menu.setButtonListener(this);
 		}
 		
 		/**
@@ -44,27 +43,28 @@ import vues.MenuVue;
 			 * pour faire le traitement par un switch.
 			 * */
 			JButton source = (JButton)arg0.getSource();
+			Caneva can = Caneva.getCaneva();
 			int button = this.menu.whoIsButton(source);
 			
 			switch(button) {
 				case 1://carre
-
+					can.setForme(Forme.RECTANGLE);
 					break;
 				
 				case 2://triangle
-					
+					can.setForme(Forme.TRIANGLE);
 					break;
 				
 				case 3://cercle
-					
+					can.setForme(Forme.CERCLE);
 					break;
 			
 				case 4://polygone
-					
+					can.setForme(Forme.POLYGONE);
 					break;
 					
-				case 5://translate
-					
+				case 5://Selection
+					can.setForme(null);
 					break;
 					
 				case 6://modifier
@@ -79,9 +79,16 @@ import vues.MenuVue;
 		@Override
 		public void itemStateChanged(ItemEvent arg0) {
 			JComboBox combobox = (JComboBox)arg0.getSource();
+			Caneva can = Caneva.getCaneva();
 			switch (combobox.getSelectedIndex()) {
 			case 0 ://noir 
-				
+				if(can.getSelection() != null) {
+					can.getSelection().setCouleur(Color.BLACK);
+				}
+				//TODO faire en sorte que la couleur définisse le libelle de la combobox.
+				//else {
+				can.setCouleur(Color.BLACK);
+				//}
 				break;
 				
 			case 1 ://jaune

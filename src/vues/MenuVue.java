@@ -92,7 +92,7 @@ public class MenuVue extends JPanel implements Observer {
 	/**
 	 * Pérmet la récupération des événements de la vue, par le controller.
 	 * */
-	public void setButtonLister(MenuControleur controller) {
+	public void setButtonListener(MenuControleur controller) {
 		this.carre.addActionListener(controller);
 		this.triangle.addActionListener(controller);
 		this.cercle.addActionListener(controller);
