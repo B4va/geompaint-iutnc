@@ -25,6 +25,7 @@ public class Caneva extends Observable {
 	private Caneva() {
 		figures = new ArrayList<FigureGeom>();
 		pointsConstruction = new ArrayList<UnPoint>();
+		couleur = Color.BLACK;
 	}
 	
 	/**
