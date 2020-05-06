@@ -65,7 +65,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.polygone = new JButton("Polygone");
 	    this.selection = new JButton("Selectionner");
 	    this.plein = new JButton("Plein");
-	    this.effacer = new JButton("Effacer");
+	    this.effacer = new JButton("Tout effacer");
 	    
 	    this.listeCouleur = new JComboBox(elements);
 	    
@@ -91,7 +91,6 @@ public class MenuVue extends JPanel implements Observer {
 	    this.add(this.effacer);
 	    this.add(this.listeCouleur);
 	    
-	    this.selection.setFocusable(true);
 	    MenuControleur controleur = new MenuControleur(this);
 	}
 	

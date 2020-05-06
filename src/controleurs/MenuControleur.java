@@ -78,9 +78,17 @@ import vues.MenuVue;
 					break;
 					
 				case 7://effacer
-					can.clearFigures();
-					can.setForme(null);
-					can.display();
+					if(can.getFigures().size() > 0) {
+						JOptionPane ouiNon = new JOptionPane();
+						ouiNon = new JOptionPane();
+						int n = ouiNon.showConfirmDialog(ouiNon, "Tout effacer ?", null, JOptionPane.YES_NO_OPTION);
+						//oui = 0; non = 1
+						if (n == 0) {
+							can.clearFigures();
+							can.setForme(null);
+							can.display();
+						}
+					}
 					break;
 			}
 			//menu.setEnabled(button);
