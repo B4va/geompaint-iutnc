@@ -75,9 +75,15 @@ public class DessinVue extends JPanel implements Observer {
 	private void tracerCercle(UnCercle c, Graphics g) {
 		int rayon = Math.abs(c.getPointsMemoire().get(1).getX() - c.getPointsMemoire().get(0).getX());
 		if (c.isPlein()) {
-			g.fillOval(c.getPointsMemoire().get(0).getX() - rayon, c.getPointsMemoire().get(0).getY() - rayon, rayon * 2, rayon * 2);
+			g.fillOval(
+					c.getPointsMemoire().get(0).getX() - rayon, 
+					c.getPointsMemoire().get(0).getY() - rayon, 
+					rayon * 2, rayon * 2);
 		} else {
-			g.drawOval(c.getPointsMemoire().get(0).getX() - rayon, c.getPointsMemoire().get(0).getY() - rayon, rayon * 2, rayon * 2);
+			g.drawOval(
+					c.getPointsMemoire().get(0).getX() - rayon, 
+					c.getPointsMemoire().get(0).getY() - rayon, 
+					rayon * 2, rayon * 2);
 		}
 	}
 	

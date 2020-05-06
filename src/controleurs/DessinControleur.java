@@ -1,13 +1,11 @@
 package controleurs;
 
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import modeles.Caneva;
-import modeles.Forme;
 import modeles.UnCercle;
 import modeles.UnPoint;
 import modeles.UnPolygone;
@@ -55,16 +53,15 @@ public class DessinControleur {
 		 */
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			/* A supprimer */
-			Caneva.getCaneva().setForme(Forme.RECTANGLE);
-			Caneva.getCaneva().setCouleur(Color.black);
-			/* Fin */
-			if (Caneva.getCaneva().getForme() != null) {
+			Caneva caneva = Caneva.getCaneva();
+			if (caneva.getForme() != null) {
 				if (e.getButton() == MouseEvent.BUTTON1) {					
 					creerFigure(e);
 				} else {
-					Caneva.getCaneva().getPointsConstruction().clear();
-					Caneva.getCaneva().display();
+					caneva.getPointsConstruction().clear();
+					caneva.setFigureConstruction(null);
+					creation = false;
+					caneva.display();
 				}
 			} else {
 				selectionnerFigure(e);
@@ -156,6 +153,10 @@ public class DessinControleur {
 		public void mouseExited(MouseEvent e) {}
 	}
 	
+	/**
+	 * Gère les mouvements de souris
+	 *
+	 */
 	private static class GestionnaireMouvement implements MouseMotionListener {
 
 		@Override
@@ -163,6 +164,9 @@ public class DessinControleur {
 
 		}
 
+		/**
+		 * Ajoute un pré-rendu de la figure en cours de création
+		 */
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			if (creation) {
