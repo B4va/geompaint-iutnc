@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -11,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.border.MatteBorder;
 
 import app.Application;
 import modeles.Caneva;
@@ -22,7 +25,7 @@ import vues.MenuVue;
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
- public class MenuControleur implements ActionListener, ItemListener {
+ public class MenuControleur implements ActionListener, ItemListener,FocusListener {
 	 	private MenuVue menu;
 		
 		/**
@@ -47,7 +50,6 @@ import vues.MenuVue;
 			JButton source = (JButton)arg0.getSource();
 			Caneva can = Caneva.getCaneva();
 			int button = this.menu.whoIsButton(source);
-			
 			switch(button) {
 				case 1://carre
 					can.setForme(Forme.RECTANGLE);
@@ -81,6 +83,7 @@ import vues.MenuVue;
 					can.display();
 					break;
 			}
+			//menu.setEnabled(button);
 		}
 		/**
 		 * Récupération et traitement des changements de valeurs du combobox,
@@ -157,5 +160,20 @@ import vues.MenuVue;
 			if (can.getSelection() != null) {
 				can.display();
 			}
+		}
+
+		@Override
+		public void focusGained(FocusEvent arg0) {
+			// TODO Auto-generated method stub
+			JButton button =(JButton)arg0.getSource();
+			button.setBorder(new MatteBorder(3, 3, 3, 3, Color.DARK_GRAY));
+
+		}
+
+		@Override
+		public void focusLost(FocusEvent arg0) {
+			// TODO Auto-generated method stub
+			JButton button =(JButton)arg0.getSource();
+			button.setBorder(new MatteBorder(1, 1, 1, 1, Color.gray));
 		}		
  }

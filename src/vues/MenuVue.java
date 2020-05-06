@@ -59,7 +59,7 @@ public class MenuVue extends JPanel implements Observer {
 		labelModification.setFont(font);
 		
 	    //création des items
-		this.carre    = new JButton("Carre");
+		this.carre    = new JButton("Rectangle");
 	    this.triangle = new JButton("Triangle");
 	    this.cercle   = new JButton("Cercle");
 	    this.polygone = new JButton("Polygone");
@@ -90,6 +90,8 @@ public class MenuVue extends JPanel implements Observer {
 	    this.add(this.plein);
 	    this.add(this.effacer);
 	    this.add(this.listeCouleur);
+	    
+	    this.selection.setFocusable(true);
 	    MenuControleur controleur = new MenuControleur(this);
 	}
 	
@@ -104,6 +106,11 @@ public class MenuVue extends JPanel implements Observer {
 		this.selection.addActionListener(controller);
 		this.listeCouleur.addItemListener(controller);
 		this.effacer.addActionListener(controller);
+		
+		this.carre.addFocusListener(controller);
+		this.triangle.addFocusListener(controller);
+		this.cercle.addFocusListener(controller);
+		this.polygone.addFocusListener(controller);
 
 	}
 	/**
@@ -141,37 +148,7 @@ public class MenuVue extends JPanel implements Observer {
 		
 		return -1;
 	}
-	/**
-	 * Permet de déterminer quel numéro est le parametre @param button,
-	 * et retourne un bouton.
-	 * */
-	private JButton whoIsNumber(int button) {
-		switch(button) {
-			case 1:
-				return this.carre;
-				
-			case 2:
-				return this.triangle;
-				
-			case 3:
-				return this.cercle;
-				
-			case 4:
-				return this.polygone;
-				
-			case 5:
-				return this.plein;
-				
-			case 6:
-				return this.selection;
-			
-			case 7:
-				return this.effacer;
-				
-			default:
-				return null;
-		}	
-	}
+	
 	/**
 	 * Permet de mettre à jour le caneva
 	 * */
