@@ -35,8 +35,6 @@ public class DessinControleur {
 	 * Initialise le controleur
 	 */
 	public void init() {
-		vue.setFocusable(true);
-		vue.requestFocus();
 		vue.addMouseListener(new GestionnaireSouris());
 		vue.addMouseMotionListener(new GestionnaireMouvement());
 	}
