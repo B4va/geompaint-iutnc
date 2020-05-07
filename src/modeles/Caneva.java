@@ -18,6 +18,7 @@ public class Caneva extends Observable {
 	private Forme forme;
 	private Color couleur;
 	private FigureGeom selection;
+	private boolean plein;
 
 	/**
 	 * Constructeur du singleton
@@ -26,6 +27,7 @@ public class Caneva extends Observable {
 		figures = new ArrayList<FigureGeom>();
 		pointsConstruction = new ArrayList<UnPoint>();
 		couleur = Color.BLACK;
+		forme = Forme.RECTANGLE;
 	}
 	
 	/**
@@ -39,6 +41,9 @@ public class Caneva extends Observable {
 		return CANEVA;
 	}
 	
+	/**
+	 * Affiche le caneva mis à jour
+	 */
 	public void display() {
 		setChanged();
 		notifyObservers();
@@ -80,6 +85,14 @@ public class Caneva extends Observable {
 	
 	public FigureGeom getFigureConstruction() {
 		return figureConstruction;
+	}
+	
+	public boolean isPlein() {
+		return plein;
+	}
+	
+	public void setPlein(boolean p) {
+		plein = p;
 	}
 	
 	public void setForme(Forme f) {

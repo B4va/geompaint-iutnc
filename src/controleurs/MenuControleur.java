@@ -67,14 +67,20 @@ import vues.MenuVue;
 					can.setForme(Forme.POLYGONE);
 					break;
 					
-				case 5://Selection
-					can.setForme(null);
-					break;
-					
-				case 6://plein
+				case 5://plein
 					if(can.getSelection() != null) {
 						can.getSelection().setPlein(!can.getSelection().isPlein());
 					}
+					can.setPlein(!can.isPlein());
+					if (can.isPlein()) {
+						source.setBorder(new MatteBorder(3, 3, 3, 3, Color.DARK_GRAY));
+					} else {
+						source.setBorder(new MatteBorder(1, 1, 1, 1, Color.GRAY));
+					}
+					break;
+					
+				case 6://selection
+					can.setForme(null);
 					break;
 					
 				case 7://effacer
@@ -182,6 +188,6 @@ import vues.MenuVue;
 		public void focusLost(FocusEvent arg0) {
 			// TODO Auto-generated method stub
 			JButton button =(JButton)arg0.getSource();
-			button.setBorder(new MatteBorder(1, 1, 1, 1, Color.gray));
+			button.setBorder(new MatteBorder(1, 1, 1, 1, Color.GRAY));
 		}		
  }

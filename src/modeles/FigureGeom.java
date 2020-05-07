@@ -24,7 +24,7 @@ public abstract class FigureGeom {
 		for (UnPoint p : pointsConstruction) pointsSaisie.add(p);
 		iniPointsMemoire();
 		couleur = Caneva.getCaneva().getCouleur();
-		plein = true;
+		plein = Caneva.getCaneva().isPlein();
 	}
 	
 	/**

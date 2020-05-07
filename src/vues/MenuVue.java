@@ -31,7 +31,7 @@ public class MenuVue extends JPanel implements Observer {
 	public static final int LARGEUR = 220;
 	
 	
-	private JButton carre;
+	private JButton rectangle;
 	private JButton triangle;
 	private JButton cercle;
 	private JButton polygone;
@@ -59,7 +59,7 @@ public class MenuVue extends JPanel implements Observer {
 		labelModification.setFont(font);
 		
 	    //création des items
-		this.carre    = new JButton("Rectangle");
+		this.rectangle    = new JButton("Rectangle");
 	    this.triangle = new JButton("Triangle");
 	    this.cercle   = new JButton("Cercle");
 	    this.polygone = new JButton("Polygone");
@@ -70,7 +70,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.listeCouleur = new JComboBox(elements);
 	    
 	    //parametrage de la taille des items
-	    this.carre.setPreferredSize(new Dimension(200,50));
+	    this.rectangle.setPreferredSize(new Dimension(200,50));
 	    this.triangle.setPreferredSize(new Dimension(200,50));
 	    this.cercle.setPreferredSize(new Dimension(200,50));
 	    this.polygone.setPreferredSize(new Dimension(200,50));
@@ -81,7 +81,7 @@ public class MenuVue extends JPanel implements Observer {
 
 	    //ajout des items
 	    this.add(labelCreation);
-	    this.add(this.carre);
+	    this.add(this.rectangle);
 	    this.add(this.triangle);
 	    this.add(this.cercle);
 	    this.add(this.polygone);
@@ -98,15 +98,17 @@ public class MenuVue extends JPanel implements Observer {
 	 * Pérmet la récupération des événements de la vue, par le controller.
 	 * */
 	public void setButtonListener(MenuControleur controller) {
-		this.carre.addActionListener(controller);
+		this.rectangle.addActionListener(controller);
 		this.triangle.addActionListener(controller);
 		this.cercle.addActionListener(controller);
 		this.polygone.addActionListener(controller);
 		this.selection.addActionListener(controller);
 		this.listeCouleur.addItemListener(controller);
 		this.effacer.addActionListener(controller);
+		this.plein.addActionListener(controller);
 		
-		this.carre.addFocusListener(controller);
+		this.plein.setFocusable(false);
+		this.rectangle.addFocusListener(controller);
 		this.triangle.addFocusListener(controller);
 		this.cercle.addFocusListener(controller);
 		this.polygone.addFocusListener(controller);
@@ -117,7 +119,7 @@ public class MenuVue extends JPanel implements Observer {
 	 * et retourne un numéro.
 	 * */
 	public int whoIsButton(Object button) {
-		if(button == this.carre) {
+		if(button == this.rectangle) {
 			return 1;
 		}
 		
