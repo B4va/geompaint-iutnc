@@ -1,7 +1,6 @@
 package controleurs;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -12,10 +11,8 @@ import java.awt.event.ItemListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 
-import app.Application;
 import modeles.Caneva;
 import modeles.Forme;
 import vues.MenuVue;
@@ -26,7 +23,9 @@ import vues.MenuVue;
  *
  */
  public class MenuControleur implements ActionListener, ItemListener,FocusListener {
+	 
 	 	private MenuVue menu;
+	 	
 		
 		/**
 		 * Constructeur qui permet d'initialiser:
@@ -85,9 +84,7 @@ import vues.MenuVue;
 					
 				case 7://effacer
 					if(can.getFigures().size() > 0) {
-						JOptionPane ouiNon = new JOptionPane();
-						ouiNon = new JOptionPane();
-						int n = ouiNon.showConfirmDialog(ouiNon, "Tout effacer ?", null, JOptionPane.YES_NO_OPTION);
+						int n = JOptionPane.showConfirmDialog(new JOptionPane(), "Tout effacer ?", null, JOptionPane.YES_NO_OPTION);
 						//oui = 0; non = 1
 						if (n == 0) {
 							can.clearFigures();
@@ -105,17 +102,18 @@ import vues.MenuVue;
 		 * */
 		@Override
 		public void itemStateChanged(ItemEvent arg0) {
-			JComboBox combobox = (JComboBox)arg0.getSource();
+			JComboBox<?> combobox = null;
+			if (arg0.getSource() instanceof JComboBox<?>) {				
+				combobox = (JComboBox<?>)arg0.getSource();
+			}
 			Caneva can = Caneva.getCaneva();
 			switch (combobox.getSelectedIndex()) {
 			case 0 ://noir 
 				if(can.getSelection() != null) {
 					can.getSelection().setCouleur(Color.BLACK);
 				}
-				//TODO faire en sorte que la couleur définisse le libelle de la combobox.
-				//else {
+
 				can.setCouleur(Color.BLACK);
-				//}
 				break;
 				
 			case 1 ://jaune
@@ -178,7 +176,6 @@ import vues.MenuVue;
 
 		@Override
 		public void focusGained(FocusEvent arg0) {
-			// TODO Auto-generated method stub
 			JButton button =(JButton)arg0.getSource();
 			button.setBorder(new MatteBorder(3, 3, 3, 3, Color.DARK_GRAY));
 
@@ -186,7 +183,6 @@ import vues.MenuVue;
 
 		@Override
 		public void focusLost(FocusEvent arg0) {
-			// TODO Auto-generated method stub
 			JButton button =(JButton)arg0.getSource();
 			button.setBorder(new MatteBorder(1, 1, 1, 1, Color.GRAY));
 		}		

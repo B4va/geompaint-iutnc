@@ -5,16 +5,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Observable;
 import java.util.Observer;
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
 import controleurs.MenuControleur;
 
 /**
@@ -23,9 +17,7 @@ import controleurs.MenuControleur;
  *
  */
 public class MenuVue extends JPanel implements Observer {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	public static final int LARGEUR = 220;
@@ -38,7 +30,7 @@ public class MenuVue extends JPanel implements Observer {
 	private JButton plein;
 	private JButton selection;
 	private JButton effacer;
-    private JComboBox listeCouleur;
+    private JComboBox<Object> listeCouleur;
 
     /**
 	 * Constructeur qui génére le menu de l'application.
@@ -67,7 +59,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.plein = new JButton("Plein");
 	    this.effacer = new JButton("Tout effacer");
 	    
-	    this.listeCouleur = new JComboBox(elements);
+	    this.listeCouleur = new JComboBox<Object>(elements);
 	    
 	    //parametrage de la taille des items
 	    this.rectangle.setPreferredSize(new Dimension(200,50));
@@ -91,7 +83,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.add(this.effacer);
 	    this.add(this.listeCouleur);
 	    
-	    MenuControleur controleur = new MenuControleur(this);
+	    new MenuControleur(this);
 	}
 	
 	/**

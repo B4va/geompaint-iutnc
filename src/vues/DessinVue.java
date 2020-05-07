@@ -13,7 +13,6 @@ import modeles.FigureGeom;
 import modeles.UnCercle;
 import modeles.UnPoint;
 import modeles.UnPolygone;
-import modeles.UnRectangle;
 
 /**
  * Gestion de l'affichage l'interface de dessin
@@ -22,6 +21,7 @@ import modeles.UnRectangle;
  */
 public class DessinVue extends JPanel implements Observer {
 	
+	private static final long serialVersionUID = 1L;
 	private static final int TAILLE_POINTS = 10;
 	private static final int TOLERANCE = 10;
 	public static final int LARGEUR = 800;
