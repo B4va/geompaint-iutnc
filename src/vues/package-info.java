@@ -1,4 +1,4 @@
 /**
- * Gestion des vues
+ * Vues de l'application
  */
 package vues;

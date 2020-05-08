@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- * Modélise Singleton du caneva de dessins
+ * Modélisation du singleton associé au caneva
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
@@ -31,8 +31,8 @@ public class Caneva extends Observable {
 	}
 	
 	/**
-	 * Getter de l'instance de caneva
-	 * @return caneva
+	 * Retourne l'instance de caneva
+	 * @return caneva singleton
 	 */
 	public static Caneva getCaneva() {
 		if(CANEVA == null) {
@@ -50,63 +50,104 @@ public class Caneva extends Observable {
 	}
 	
 	/**
-	 * Getter de la liste de figures
-	 * @return figures
+	 * Retourne la liste de figures
+	 * @return figures ensemble des figures
 	 */
 	public ArrayList<FigureGeom> getFigures() {
 		return figures;
 	}
+	
 	/**
-	 * efface toutes les figures géom de la liste
-	 * 
+	 * Efface toutes les figures de la liste
 	 */
 	public void clearFigures() {
 		figures = new ArrayList<FigureGeom>();
 	}
+	
 	/**
-	 * Getter de la liste de points de construction
-	 * @return figures
+	 * Retourne la liste des points de construction
+	 * @return liste des points de contruction 
 	 */
 	public ArrayList<UnPoint> getPointsConstruction() {
 		return pointsConstruction;
 	}
 	
+	/**
+	 * Retourne la forme sélectionnée
+	 * @return forme séléctionnée
+	 */
 	public Forme getForme() {
 		return forme;
 	}
 	
+	/**
+	 * Retourne la courleur sélectionnée
+	 * @return couleur sélectionnée
+	 */
 	public Color getCouleur() {
 		return couleur;
 	}
 	
+	/**
+	 * Retourne la figure sélectionnée
+	 * @return figure séléctionnée
+	 */
 	public FigureGeom getSelection() {
 		return selection;
 	}
 	
+	/**
+	 * Retourne la figure en construction
+	 * @return figure en construction
+	 */
 	public FigureGeom getFigureConstruction() {
 		return figureConstruction;
 	}
 	
+	/**
+	 * Indique si 'plein' est sélectionné
+	 * @return true si plein est sélectionné
+	 */
 	public boolean isPlein() {
 		return plein;
 	}
 	
+	/**
+	 * Modifie la valeur de plein
+	 * @param p true si plein est sélectionné
+	 */
 	public void setPlein(boolean p) {
 		plein = p;
 	}
 	
+	/**
+	 * Modifie la forme sélectionnée
+	 * @param f forme sélectionnée
+	 */
 	public void setForme(Forme f) {
 		forme = f;
 	}
 
+	/**
+	 * Modifie la couleur sélectionnée
+	 * @param c couleur sélectionnée
+	 */
 	public void setCouleur(Color c) {
 		couleur = c;
 	}
 	
+	/**
+	 * Modifie la figure sélectionnée
+	 * @param f figure sélectionnée
+	 */
 	public void setSelection(FigureGeom f) {
 		selection = f;
 	}
 	
+	/**
+	 * Modifie la figure en construction
+	 * @param f figure en construction
+	 */
 	public void setFigureConstruction(FigureGeom f) {
 		figureConstruction = f;
 	}

@@ -1,7 +1,7 @@
 package modeles;
 
 /**
- * Modélise un point
+ * Modélisation d'un point
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
@@ -29,10 +29,18 @@ public class UnPoint {
 		this.y += y;
 	}
 	
+	/**
+	 * Retourne l'abscisse du point
+	 * @return abscisse du point
+	 */
 	public int getX() {
 		return x;
 	}
 	
+	/**
+	 * Retourne l'ordonnée du point
+	 * @return ordonnée du point
+	 */
 	public int getY() {
 		return y;
 	}

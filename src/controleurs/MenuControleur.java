@@ -18,7 +18,7 @@ import modeles.Forme;
 import vues.MenuVue;
 
 /**
- *
+ * Gestionnaire des événements liés au menu
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
@@ -28,7 +28,7 @@ import vues.MenuVue;
 	 	
 		
 		/**
-		 * Constructeur qui permet d'initialiser:
+		 * Constructeur permettant d'initialiser la gestion d'événement
 		 * @param unMenu pour la vue traitée par cette classe,
 		 * @param unCaneva pour lier les actions au Caneva de l'application
 		 * */
@@ -38,13 +38,13 @@ import vues.MenuVue;
 		}
 		
 		/**
-		 * Récupération et traitement des cliques des boutons de l'application.
-		 * */
+		 * Récupère et traite les boutons de l'application
+		 */
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			/**
 			 * Récupération du bouton sous forme de numéro, 
-			 * pour faire le traitement par un switch.
+			 * pour faire le traitement par un switch
 			 * */
 			JButton source = (JButton)arg0.getSource();
 			Caneva can = Caneva.getCaneva();
@@ -96,10 +96,11 @@ import vues.MenuVue;
 			}
 			//menu.setEnabled(button);
 		}
+		
 		/**
-		 * Récupération et traitement des changements de valeurs du combobox,
-		 * par index de séléction.
-		 * */
+		 * Récupère et traite les changements de valeurs du combobox
+		 * par index de séléction
+		 */
 		@Override
 		public void itemStateChanged(ItemEvent arg0) {
 			JComboBox<?> combobox = null;
@@ -174,6 +175,10 @@ import vues.MenuVue;
 			}
 		}
 
+		/**
+		 * Formatte le bouton sélectionné
+		 * @param arg0 événement
+		 */
 		@Override
 		public void focusGained(FocusEvent arg0) {
 			JButton button =(JButton)arg0.getSource();
@@ -181,6 +186,10 @@ import vues.MenuVue;
 
 		}
 
+		/**
+		 * Formatte le bouton désélectionné
+		 * @param arg0 événement
+		 */
 		@Override
 		public void focusLost(FocusEvent arg0) {
 			JButton button =(JButton)arg0.getSource();

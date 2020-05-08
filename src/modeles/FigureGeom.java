@@ -29,8 +29,8 @@ public abstract class FigureGeom {
 	
 	/**
 	 * Déplace un point
-	 * @param x le déplacement en abcisse
-	 * @param y le déplacement en ordonnée
+	 * @param x déplacement en abscisse
+	 * @param y déplacement en ordonnée
 	 */
 	public void translater(int x, int y) {
 		for(UnPoint p : pointsSaisie) p.translater(x, y);
@@ -59,32 +59,32 @@ public abstract class FigureGeom {
 	}
 
 	/**
-	 * Getter de la couleur
-	 * @return couleur
+	 * Retourne la couleur de la figure
+	 * @return couleur couleur de la figure
 	 */
 	public Color getCouleur() {
 		return couleur;
 	}
 
 	/**
-	 * Setter de la couleur
-	 * @param couleur
+	 * Modifie la couleur de la figure
+	 * @param couleur de la figure
 	 */
 	public void setCouleur(Color couleur) {
 		this.couleur = couleur;
 	}
 	
 	/**
-	 * Getter de l'état plein
-	 * @return plein
+	 * Indique si la figure est pleine
+	 * @return plein true si la figure est pleine
 	 */
 	public boolean isPlein() {
 		return plein;
 	}
 	
 	/**
-	 * Setter de l'état plein
-	 * @param plein
+	 * Modifie l'état de la figure
+	 * @param plein true si la figure est pleine
 	 */
 	public void setPlein(boolean plein) {
 		this.plein = plein;

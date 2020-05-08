@@ -1,4 +1,4 @@
 /**
- * Gestion des modèles
+ * Modèles de l'application
  */
 package modeles;

@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import controleurs.MenuControleur;
 
 /**
- *
+ * Gestion de l'affichage du menu
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
@@ -33,8 +33,8 @@ public class MenuVue extends JPanel implements Observer {
     private JComboBox<Object> listeCouleur;
 
     /**
-	 * Constructeur qui génére le menu de l'application.
-	 * */
+	 * Constructeur affichant le menu de l'application
+	 */
 	public MenuVue() {
 		
 		//la liste des couleur de la JComboBox
@@ -87,8 +87,9 @@ public class MenuVue extends JPanel implements Observer {
 	}
 	
 	/**
-	 * Pérmet la récupération des événements de la vue, par le controller.
-	 * */
+	 * Récupère les événements de la vue
+	 * @param controller controleur associé
+	 */
 	public void setButtonListener(MenuControleur controller) {
 		this.rectangle.addActionListener(controller);
 		this.triangle.addActionListener(controller);
@@ -107,9 +108,9 @@ public class MenuVue extends JPanel implements Observer {
 
 	}
 	/**
-	 * Permet de déterminer quel bouton est le parametre @param button,
-	 * et retourne un numéro.
-	 * */
+	 * Détermine quel est le bouton indiqué
+	 * @param button bouton à définir
+	 */
 	public int whoIsButton(Object button) {
 		if(button == this.rectangle) {
 			return 1;
@@ -143,8 +144,8 @@ public class MenuVue extends JPanel implements Observer {
 	}
 	
 	/**
-	 * Permet de mettre à jour le caneva
-	 * */
+	 * Met à jour le caneva
+	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub

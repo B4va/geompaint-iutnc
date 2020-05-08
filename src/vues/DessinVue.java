@@ -15,7 +15,7 @@ import modeles.UnPoint;
 import modeles.UnPolygone;
 
 /**
- * Gestion de l'affichage l'interface de dessin
+ * Gestion de l'affichage du panneau de dessin
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
@@ -41,6 +41,8 @@ public class DessinVue extends JPanel implements Observer {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if (caneva != null) {
+			
+			// affichage des figures
 			for (FigureGeom f : caneva.getFigures()) {
 				g.setColor(f.getCouleur());
 				if (f instanceof UnCercle) {
@@ -49,8 +51,12 @@ public class DessinVue extends JPanel implements Observer {
 					tracerPolygone((UnPolygone)f, g);
 				}
 			}
+			
+			// affichage de la sélection
 			FigureGeom selection = caneva.getSelection();
 			if (selection != null) tracerPointsMemoire(selection, g);
+			
+			// affichage de la figure en construction
 			FigureGeom figureConstr = caneva.getFigureConstruction();
 			g.setColor(Color.LIGHT_GRAY);
 			if (figureConstr != null) {
@@ -60,6 +66,8 @@ public class DessinVue extends JPanel implements Observer {
 					tracerPolygone((UnPolygone)figureConstr, g);
 				}
 			}
+			
+			// affichage des points en construction
 			for (UnPoint p : caneva.getPointsConstruction()) {
 				tracerPointConstruction(p, g);
 			}

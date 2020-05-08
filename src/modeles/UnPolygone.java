@@ -3,7 +3,7 @@ package modeles;
 import java.util.ArrayList;
 
 /**
- * Modélise un polygone quelconque
+ * Modélisation d'un polygone quelconque
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
@@ -17,10 +17,10 @@ public class UnPolygone extends FigureGeom {
 		super(pointsConstruction);
 	}
 
-	@Override
 	/**
 	 * Enregistre les points de mémoire
 	 */
+	@Override
 	protected void iniPointsMemoire() {
 		pointsMemoire = pointsSaisie;
 	}

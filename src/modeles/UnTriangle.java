@@ -3,7 +3,7 @@ package modeles;
 import java.util.ArrayList;
 
 /**
- * Modélise un triangle
+ * Modélisation d'un triangle
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */

@@ -1,4 +1,4 @@
 /**
- * Gestion des controleurs
+ * Controleurs de l'application
  */
 package controleurs;

@@ -14,7 +14,7 @@ import modeles.UnTriangle;
 import vues.DessinVue;
 
 /**
- * Gestion de l'interface de dessin
+ * Gestionnaire des événements liés au panneau de dessin
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
@@ -40,13 +40,13 @@ public class DessinControleur {
 	}
 	
 	/**
-	 * Gestionnaire des actions utilisateur réalisées à la souris
+	 * Gestionnaire des inputs utilisateur réalisées à la souris
 	 *
 	 */
 	private static class GestionnaireSouris implements MouseListener{
 		
 		/**
-		 * Gère les clics souris
+		 * Gère les clics souris : dessin ou sélection
 		 */
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -147,15 +147,10 @@ public class DessinControleur {
 	}
 	
 	/**
-	 * Gère les mouvements de souris
+	 * Gestionnaire des mouvements de souris réalisés par l'utilisateur
 	 *
 	 */
 	private static class GestionnaireMouvement implements MouseMotionListener {
-
-		@Override
-		public void mouseDragged(MouseEvent e) {
-
-		}
 
 		/**
 		 * Ajoute un pré-rendu de la figure en cours de création
@@ -195,6 +190,12 @@ public class DessinControleur {
 				}
 				caneva.display();
 			}
+			
+		}
+		
+		@Override
+		public void mouseDragged(MouseEvent e) {
+			
 		}
 		
 	}

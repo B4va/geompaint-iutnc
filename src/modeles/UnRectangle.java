@@ -3,7 +3,7 @@ package modeles;
 import java.util.ArrayList;
 
 /**
- * Modélise un rectangle
+ * Modélisation d'un rectangle
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */

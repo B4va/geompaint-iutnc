@@ -3,7 +3,7 @@ package modeles;
 import java.util.ArrayList;
 
 /**
- * Modélise un cercle
+ * Modélisation d'un cercle
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
