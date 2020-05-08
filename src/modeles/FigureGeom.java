@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Clément DOSDA, Louis FRIEDRICH, Loïc STEINMETZ, Julien TAVERNIER
  *
  */
-public abstract class FigureGeom {
+public abstract class FigureGeom implements Translatable {
 
 	protected ArrayList<UnPoint> pointsSaisie;
 	protected ArrayList<UnPoint> pointsMemoire;
