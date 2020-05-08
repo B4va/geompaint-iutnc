@@ -21,8 +21,8 @@ public class UnPoint implements Translatable {
 	
 	/**
 	 * Déplace un point
-	 * @param x le déplacement en abcisse
-	 * @param y le déplacement en ordonnée
+	 * @param x déplacement sur l'axe des abscisses
+	 * @param y déplacement sur l'axe des ordonnées
 	 */
 	public void translater(int x, int y) {
 		this.x += x;

@@ -29,8 +29,8 @@ public abstract class FigureGeom implements Translatable {
 	
 	/**
 	 * Déplace un point
-	 * @param x déplacement en abscisse
-	 * @param y déplacement en ordonnée
+	 * @param x déplacement sur l'axe des abscisses
+	 * @param y déplacement sur l'axe des ordonnées
 	 */
 	public void translater(int x, int y) {
 		for(UnPoint p : pointsMemoire) p.translater(x, y);

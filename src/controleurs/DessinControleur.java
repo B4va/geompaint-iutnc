@@ -51,6 +51,7 @@ public class DessinControleur {
 		
 		/**
 		 * Gère les clics souris : dessin ou sélection
+		 * @param e événement
 		 */
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -71,7 +72,7 @@ public class DessinControleur {
 		
 		/**
 		 * Crée une figure à partir des points saisis par l'utilisateur
-		 * @param e
+		 * @param e événement
 		 */
 		private void creerFigure(MouseEvent e) {
 			Caneva caneva = Caneva.getCaneva();
@@ -102,7 +103,6 @@ public class DessinControleur {
 				}
 				break;
 			case CERCLE :
-				/* Points de construction au centre ? */
 				if (ptsConst.size() == 2) {
 					UnCercle c = new UnCercle(ptsConst);
 					caneva.getFigures().add(c);
@@ -129,6 +129,10 @@ public class DessinControleur {
 			caneva.display();
 		}
 
+		/**
+		 * Initialise les paramètres de translation
+		 * @param e événement
+		 */
 		@Override
 		public void mousePressed(MouseEvent e) {
 			if (transObjet == null) {
@@ -153,7 +157,7 @@ public class DessinControleur {
 		
 		/**
 		 * Sélectionne la figure sur laquelle clique l'utilisateur
-		 * @param e
+		 * @param e événement
 		 */
 		private void selectionnerFigure(MouseEvent e) {
 			Caneva c = Caneva.getCaneva();
@@ -168,6 +172,10 @@ public class DessinControleur {
 			c.display();
 		}
 		
+		/**
+		 * Réinitialise les paramètres de translation
+		 * @param e événement
+		 */
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			dragOrigin = null;
@@ -188,6 +196,7 @@ public class DessinControleur {
 
 		/**
 		 * Ajoute un pré-rendu de la figure en cours de création
+		 * @param e événement
 		 */
 		@Override
 		public void mouseMoved(MouseEvent e) {
@@ -227,6 +236,10 @@ public class DessinControleur {
 			
 		}
 		
+		/**
+		 * Déplace un point ou une figure
+		 * @param e événement
+		 */
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			FigureGeom sel = Caneva.getCaneva().getSelection();
