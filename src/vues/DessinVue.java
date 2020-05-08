@@ -2,6 +2,16 @@ package vues;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Polygon;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.PathIterator;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -166,6 +176,35 @@ public class DessinVue extends JPanel implements Observer {
 		boolean x = Math.abs(p1.getX() - p2.getX()) < TOLERANCE;
 		boolean y = Math.abs(p1.getY() - p2.getY()) < TOLERANCE;
 		return x && y;
+	}
+	
+	/**
+	 * Vérifie si un point est contenu dans une figure
+	 * @param f figure géométrique
+	 * @param xPt abscisse du point
+	 * @param yPt ordonnée du point
+	 * @return true si le point est contenu dans la figure
+	 */
+	public static boolean contient(FigureGeom f, int xPt, int yPt) {
+		ArrayList<UnPoint> pts = f.getPointsMemoire();
+		if (f instanceof UnPolygone) {
+			int[] x = new int[pts.size()];
+			int[] y = new int[pts.size()];
+			for (int i = 0 ; i < pts.size() ; i++) {
+				UnPoint pt = pts.get(i);
+				x[i] = pt.getX();
+				y[i] = pt.getY();
+			}
+			Polygon poly = new Polygon(x, y, pts.size());
+			return poly.contains(new Point(xPt, yPt));
+		} else {
+			double rayon = Math.abs(f.getPointsMemoire().get(1).getX() - f.getPointsMemoire().get(0).getX());
+			double taille = rayon * 2;
+			double x = pts.get(0).getX() - rayon;
+			double y = pts.get(0).getY() - rayon;
+			Ellipse2D.Double e = new Ellipse2D.Double(x, y, taille, taille);
+			return e.contains(new Point2D.Double((double)xPt, (double)yPt));
+		}
 	}
 
 }

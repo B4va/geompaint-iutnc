@@ -6,6 +6,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import modeles.Caneva;
+import modeles.FigureGeom;
 import modeles.UnCercle;
 import modeles.UnPoint;
 import modeles.UnPolygone;
@@ -130,7 +131,16 @@ public class DessinControleur {
 		 * @param e
 		 */
 		private void selectionnerFigure(MouseEvent e) {
-			
+			Caneva c = Caneva.getCaneva();
+			ArrayList<FigureGeom> figures = c.getFigures();
+			c.setSelection(null);
+			for (int i = figures.size() - 1 ; i >= 0 ; i--) {
+				if (DessinVue.contient(figures.get(i), e.getX(), e.getY())) {
+					c.setSelection(figures.get(i));
+					break;
+				}
+			}
+			c.display();
 		}
 
 		@Override
