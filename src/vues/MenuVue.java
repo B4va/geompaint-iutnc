@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Observable;
 import java.util.Observer;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -19,7 +21,7 @@ import controleurs.MenuControleur;
 public class MenuVue extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
-	
+	public static final Color BACKGROUND = Color.PINK;
 	public static final int LARGEUR = 220;
 	
 	
@@ -41,7 +43,7 @@ public class MenuVue extends JPanel implements Observer {
 		Object[] elements = new Object[]{"Noir", "jaune", "vert", "bleu", "rouge","rose","gris","gris foncé"};
 		
 		
-		this.setBackground(Color.pink);
+		this.setBackground(BACKGROUND);
 		Font font = new Font("Courier", Font.BOLD,24);
 		
 		JLabel labelCreation = new JLabel("Création : ");

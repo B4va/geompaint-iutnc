@@ -1,5 +1,6 @@
 package app;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
@@ -44,8 +45,9 @@ public class Application {
 		p.add(mVue);
 		p.add(dVue);
 		p.setPreferredSize(new Dimension(MenuVue.LARGEUR + DessinVue.LARGEUR, HAUTEUR));
+		p.setBackground(MenuVue.BACKGROUND);
 		mVue.setPreferredSize(new Dimension(MenuVue.LARGEUR, HAUTEUR));
-		dVue.setPreferredSize(new Dimension(DessinVue.LARGEUR, HAUTEUR));
+		mVue.setMaximumSize(new Dimension(MenuVue.LARGEUR, HAUTEUR));
 		
 		// génère l'affichage
 		f.setContentPane(p);
