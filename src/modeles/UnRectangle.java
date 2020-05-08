@@ -25,15 +25,21 @@ public class UnRectangle extends UnPolygone {
 		pointsMemoire = new ArrayList<>();
 		UnPoint a = pointsSaisie.get(0);
 		UnPoint b = pointsSaisie.get(1);
+		UnPoint c, d;
 		int xA = a.getX();
 		int yA = a.getY();
 		int xB = b.getX();
 		int yB = b.getY();
+		if(xA > xB && yA > yB || xA < xB && yA < yB) {
+			c = new UnPoint(xA > xB ? xA : xB, yA < yB ? yA : yB);
+			d = new UnPoint(xA < xB ? xA : xB, yA > yB ? yA : yB);
+		} else {
+			c = new UnPoint(xA > xB ? xA : xB, yA > yB ? yA : yB);
+			d = new UnPoint(xA < xB ? xA : xB, yA < yB ? yA : yB);
+		}
 		pointsMemoire.add(a);
-		// ajout du point haut-droite
-		pointsMemoire.add(new UnPoint(xA > xB ? xA : xB, yA));
+		pointsMemoire.add(c);
 		pointsMemoire.add(b);
-		// ajout du point bas-gauche
-		pointsMemoire.add(new UnPoint(xA, yA > yB ? yA : yB));	
+		pointsMemoire.add(d);
 	}
 }
