@@ -135,23 +135,32 @@ public class DessinControleur {
 		 */
 		@Override
 		public void mousePressed(MouseEvent e) {
-			if (transObjet == null) {
-				FigureGeom f = Caneva.getCaneva().getSelection();
-				if (f != null) {
-					for (UnPoint p : f.getPointsMemoire()) {
-						if (DessinVue.superposition(p, new UnPoint(e.getX(), e.getY()))) {
-							transObjet = p;
+			if (Caneva.getCaneva().getForme() == null) {				
+				if (transObjet == null) {
+					FigureGeom f = Caneva.getCaneva().getSelection();
+					if (f != null) {
+						if (f instanceof UnPolygone) {							
+							for (UnPoint p : f.getPointsMemoire()) {
+								if (DessinVue.superposition(p, new UnPoint(e.getX(), e.getY()))) {
+									transObjet = p;
+								}
+							}
+						} else {
+							UnPoint p = f.getPointsMemoire().get(1);
+							if (DessinVue.superposition(p, new UnPoint(e.getX(), e.getY()))) {
+								transObjet = p;
+							}
 						}
 					}
-				}
-				if (transObjet == null) {
-					selectionnerFigure(e);
-					f = Caneva.getCaneva().getSelection();
-					if (f != null) {
-						transObjet = f;
+					if (transObjet == null) {
+						selectionnerFigure(e);
+						f = Caneva.getCaneva().getSelection();
+						if (f != null) {
+							transObjet = f;
+						}
 					}
+					dragOrigin = new UnPoint(e.getX(), e.getY());
 				}
-				dragOrigin = new UnPoint(e.getX(), e.getY());
 			}
 		}
 		
@@ -246,7 +255,11 @@ public class DessinControleur {
 			if (sel != null && dragOrigin != null) {
 				int x = e.getX() - dragOrigin.getX();
 				int y = e.getY() - dragOrigin.getY();
-				transObjet.translater(x, y);
+				if (transObjet instanceof UnPoint && sel instanceof UnCercle) {
+					transObjet.translater(x, 0);
+				} else {					
+					transObjet.translater(x, y);
+				}
 				Caneva.getCaneva().display();
 				dragOrigin = new UnPoint(e.getX(), e.getY());
 			}
