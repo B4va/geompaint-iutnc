@@ -33,7 +33,6 @@ public abstract class FigureGeom {
 	 * @param y déplacement en ordonnée
 	 */
 	public void translater(int x, int y) {
-		for(UnPoint p : pointsSaisie) p.translater(x, y);
 		for(UnPoint p : pointsMemoire) p.translater(x, y);
 	}
 

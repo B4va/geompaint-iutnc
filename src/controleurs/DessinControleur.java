@@ -21,6 +21,7 @@ import vues.DessinVue;
  */
 public class DessinControleur {
 	
+	private static UnPoint dragOrigin;
 	private static boolean creation;
 	private DessinVue vue;
 	
@@ -61,8 +62,6 @@ public class DessinControleur {
 					creation = false;
 					caneva.display();
 				}
-			} else {
-				selectionnerFigure(e);
 			}
 		}
 		
@@ -125,6 +124,15 @@ public class DessinControleur {
 			}
 			caneva.display();
 		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			dragOrigin = new UnPoint(e.getX(), e.getY());
+			Caneva caneva = Caneva.getCaneva();
+			if (caneva.getForme() == null) {
+				selectionnerFigure(e);
+			}
+		}
 		
 		/**
 		 * Sélectionne la figure sur laquelle clique l'utilisateur
@@ -142,10 +150,7 @@ public class DessinControleur {
 			}
 			c.display();
 		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-		}
+		
 		@Override
 		public void mouseReleased(MouseEvent e) {
 		}
@@ -205,7 +210,15 @@ public class DessinControleur {
 		
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			
+			FigureGeom sel = Caneva.getCaneva().getSelection();
+			if (sel != null && dragOrigin != null) {
+				int x = e.getX() - dragOrigin.getX();
+				int y = e.getY() - dragOrigin.getY();
+				System.out.println(x + " - " + y);
+				sel.translater(x, y);
+				Caneva.getCaneva().display();
+			}
+			dragOrigin = new UnPoint(e.getX(), e.getY());
 		}
 		
 	}

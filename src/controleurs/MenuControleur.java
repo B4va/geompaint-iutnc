@@ -52,25 +52,34 @@ import vues.MenuVue;
 			switch(button) {
 				case 1://carre
 					can.setForme(Forme.RECTANGLE);
+					can.setSelection(null);
+					can.display();
 					break;
 				
 				case 2://triangle
 					can.setForme(Forme.TRIANGLE);
+					can.setSelection(null);
+					can.display();
 					break;
 				
 				case 3://cercle
 					can.setForme(Forme.CERCLE);
+					can.setSelection(null);
+					can.display();
 					break;
 			
 				case 4://polygone
 					can.setForme(Forme.POLYGONE);
+					can.setSelection(null);
+					can.display();
 					break;
 					
 				case 5://plein
-					if(can.getSelection() != null) {
-						can.getSelection().setPlein(!can.getSelection().isPlein());
-					}
 					can.setPlein(!can.isPlein());
+					if(can.getSelection() != null) {
+						can.getSelection().setPlein(can.isPlein());
+						can.display();
+					}
 					if (can.isPlein()) {
 						source.setBorder(new MatteBorder(3, 3, 3, 3, Color.DARK_GRAY));
 					} else {
@@ -89,6 +98,7 @@ import vues.MenuVue;
 						if (n == 0) {
 							can.clearFigures();
 							can.setForme(null);
+							can.setSelection(null);
 							can.display();
 						}
 					}
