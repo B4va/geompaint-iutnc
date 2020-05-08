@@ -19,6 +19,10 @@ public class Application {
 	
 	public static final int HAUTEUR = 800;
 
+	/**
+	 * Méthode éxécutable
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// configure les paramètres généraux de la fenêtre
 		JFrame f = new JFrame();
