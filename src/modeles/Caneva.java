@@ -58,6 +58,14 @@ public class Caneva extends Observable {
 	}
 	
 	/**
+	 * Efface la figure séléctionnée
+	 */
+	public void clearSelecFigures() {
+		int index = this.figures.indexOf(this.selection);
+		this.figures.remove(index);
+	}
+	
+	/**
 	 * Efface toutes les figures de la liste
 	 */
 	public void clearFigures() {
