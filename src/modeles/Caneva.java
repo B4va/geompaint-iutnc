@@ -121,17 +121,6 @@ public class Caneva extends Observable {
 	}
 	
 	/**
-	 * Indique une figure est sélectionné
-	 * @return true si une figure est sélectionné
-	 */
-	public boolean isSelect() {
-		if(this.selection != null) {
-			return true;
-		}
-		return false;
-	}
-	
-	/**
 	 * Modifie la valeur de plein
 	 * @param p true si plein est sélectionné
 	 */
