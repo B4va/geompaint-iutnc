@@ -103,6 +103,11 @@ import vues.MenuVue;
 						}
 					}
 					break;
+				
+				case 8:
+					can.clearSelecFigures();
+					can.display();
+					break;
 			}
 			//menu.setEnabled(button);
 		}

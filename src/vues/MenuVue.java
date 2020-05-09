@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import controleurs.MenuControleur;
+import modeles.Caneva;
 
 /**
  * Gestion de l'affichage du menu
@@ -32,6 +33,8 @@ public class MenuVue extends JPanel implements Observer {
 	private JButton plein;
 	private JButton selection;
 	private JButton effacer;
+	private JButton effacerUn;
+
     private JComboBox<Object> listeCouleur;
 
     /**
@@ -46,10 +49,10 @@ public class MenuVue extends JPanel implements Observer {
 		this.setBackground(BACKGROUND);
 		Font font = new Font("Courier", Font.BOLD,24);
 		
-		JLabel labelCreation = new JLabel("Création : ");
+		JLabel labelCreation = new JLabel("Création :");
 		labelCreation.setFont(font);
 		
-		JLabel labelModification = new JLabel("Modification : ");
+		JLabel labelModification = new JLabel("Modification :");
 		labelModification.setFont(font);
 		
 	    //création des items
@@ -60,6 +63,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.selection = new JButton("Selectionner");
 	    this.plein = new JButton("Plein");
 	    this.effacer = new JButton("Tout effacer");
+	    this.effacerUn = new JButton("Effacer");
 	    
 	    this.listeCouleur = new JComboBox<Object>(elements);
 	    
@@ -72,6 +76,8 @@ public class MenuVue extends JPanel implements Observer {
 	    this.selection.setPreferredSize(new Dimension(200,50));
 	    this.listeCouleur.setPreferredSize(new Dimension(200,50));
 	    this.effacer.setPreferredSize(new Dimension(200,50));
+	    this.effacerUn.setPreferredSize(new Dimension(200,50));
+
 
 	    //ajout des items
 	    this.add(labelCreation);
@@ -82,8 +88,12 @@ public class MenuVue extends JPanel implements Observer {
 	    this.add(labelModification);
 	    this.add(this.selection);
 	    this.add(this.plein);
+	    this.add(this.effacerUn);
 	    this.add(this.effacer);
 	    this.add(this.listeCouleur);
+	    this.effacerUn.setEnabled(false);
+	    this.effacer.setEnabled(false);
+
 	    
 	    new MenuControleur(this);
 	}
@@ -101,6 +111,7 @@ public class MenuVue extends JPanel implements Observer {
 		this.listeCouleur.addItemListener(controller);
 		this.effacer.addActionListener(controller);
 		this.plein.addActionListener(controller);
+		this.effacerUn.addActionListener(controller);
 		
 		this.plein.setFocusable(false);
 		this.rectangle.addFocusListener(controller);
@@ -142,6 +153,10 @@ public class MenuVue extends JPanel implements Observer {
 			return 7;
 		}
 		
+		if(button == this.effacerUn) {
+			return 8;
+		}
+		
 		return -1;
 	}
 	
@@ -150,7 +165,20 @@ public class MenuVue extends JPanel implements Observer {
 	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
+		Caneva caneva = (Caneva) arg0;
 		
+		if(caneva.getSelection() == null) {
+		    this.effacerUn.setEnabled(false);
+		}
+		else {
+		    this.effacerUn.setEnabled(true);
+		}
+		
+		if(caneva.getFigures().isEmpty() == false) {
+		    this.effacer.setEnabled(true);
+		}
+		else {
+		    this.effacer.setEnabled(false);
+		}
 	}
 }

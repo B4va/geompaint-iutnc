@@ -63,6 +63,7 @@ public class Caneva extends Observable {
 	public void clearSelecFigures() {
 		int index = this.figures.indexOf(this.selection);
 		this.figures.remove(index);
+		this.selection = null;
 	}
 	
 	/**
