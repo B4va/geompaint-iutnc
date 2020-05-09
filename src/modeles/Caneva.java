@@ -121,6 +121,17 @@ public class Caneva extends Observable {
 	}
 	
 	/**
+	 * Indique si 'plein' est sélectionné
+	 * @return true si plein est sélectionné
+	 */
+	public boolean isSelect() {
+		if(this.selection != null) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * Modifie la valeur de plein
 	 * @param p true si plein est sélectionné
 	 */
