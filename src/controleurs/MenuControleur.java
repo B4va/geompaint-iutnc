@@ -75,10 +75,14 @@ import vues.MenuVue;
 					break;
 					
 				case 5://plein
-					can.setPlein(!can.isPlein());
+					
 					if(can.getSelection() != null) {
-						can.getSelection().setPlein(can.isPlein());
+						can.getSelection().setPlein(!can.getSelection().isPlein());
+						can.setPlein(can.getSelection().isPlein());
 						can.display();
+					}
+					else {
+						can.setPlein(!can.isPlein());
 					}
 					if (can.isPlein()) {
 						source.setBorder(new MatteBorder(3, 3, 3, 3, Color.DARK_GRAY));

@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.MatteBorder;
+
 import controleurs.MenuControleur;
 import modeles.Caneva;
 
@@ -93,6 +95,7 @@ public class MenuVue extends JPanel implements Observer {
 	    this.add(this.listeCouleur);
 	    this.effacerUn.setEnabled(false);
 	    this.effacer.setEnabled(false);
+	    this.selection.setEnabled(false);
 
 	    
 	    new MenuControleur(this);
@@ -172,13 +175,22 @@ public class MenuVue extends JPanel implements Observer {
 		}
 		else {
 		    this.effacerUn.setEnabled(true);
+		    
+		    if(caneva.getSelection().isPlein()) {
+		    	this.plein.setBorder(new MatteBorder(3, 3, 3, 3, Color.DARK_GRAY));
+			} 
+		    else {
+		    	this.plein.setBorder(new MatteBorder(1, 1, 1, 1, Color.GRAY));
+		    }
 		}
 		
 		if(caneva.getFigures().isEmpty() == false) {
 		    this.effacer.setEnabled(true);
+		    this.selection.setEnabled(true);
 		}
 		else {
 		    this.effacer.setEnabled(false);
+		    this.selection.setEnabled(true);
 		}
 	}
 }
