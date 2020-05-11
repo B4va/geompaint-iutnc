@@ -169,6 +169,25 @@ public class MenuVue extends JPanel implements Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		Caneva caneva = (Caneva) arg0;
+		int index = 0;
+		if (caneva.getCouleur() == Color.BLACK) {
+			index = 0;
+		} else if (caneva.getCouleur() == Color.YELLOW) {
+			index = 1;
+		} else if (caneva.getCouleur() == Color.GREEN) {
+			index = 2;
+		} else if (caneva.getCouleur() == Color.BLUE) {
+			index = 3;
+		} else if (caneva.getCouleur() == Color.RED) {
+			index = 4;
+		} else if (caneva.getCouleur() == Color.PINK) {
+			index = 5;
+		} else if (caneva.getCouleur() == Color.GRAY) {
+			index = 6;
+		} else if (caneva.getCouleur() == Color.DARK_GRAY) {
+			index = 7;
+		}
+		if (!listeCouleur.hasFocus()) listeCouleur.setSelectedIndex(index);
 		if(caneva.getSelection() == null) {
 		    this.effacerUn.setEnabled(false);
 		}

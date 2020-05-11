@@ -113,7 +113,6 @@ import vues.MenuVue;
 					can.display();
 					break;
 			}
-			//menu.setEnabled(button);
 		}
 		
 		/**
@@ -126,71 +125,65 @@ import vues.MenuVue;
 			if (arg0.getSource() instanceof JComboBox<?>) {				
 				combobox = (JComboBox<?>)arg0.getSource();
 			}
-			Caneva can = Caneva.getCaneva();
-			switch (combobox.getSelectedIndex()) {
-			case 0 ://noir 
-				if(can.getSelection() != null) {
-					can.getSelection().setCouleur(Color.BLACK);
-				}
-
-				can.setCouleur(Color.BLACK);
-				break;
-				
-			case 1 ://jaune
-				if(can.getSelection() != null) {
-					can.getSelection().setCouleur(Color.YELLOW);
-				}
-
-				can.setCouleur(Color.YELLOW);
-				break;
-				
-			case 2 ://vert
-				if(can.getSelection() != null) {
-					can.getSelection().setCouleur(Color.GREEN);
-				}
-				can.setCouleur(Color.GREEN);
-				break;
+			if (combobox.hasFocus()) {
+				Caneva can = Caneva.getCaneva();
+				switch (combobox.getSelectedIndex()) {
+				case 0 ://noir 
+					if(can.getSelection() != null) {
+						can.getSelection().setCouleur(Color.BLACK);
+					}
+					can.setCouleur(Color.BLACK);
+					break;
+				case 1 ://jaune
+					if(can.getSelection() != null) {
+						can.getSelection().setCouleur(Color.YELLOW);
+					}
+					can.setCouleur(Color.YELLOW);
+					break;
+				case 2 ://vert
+					if(can.getSelection() != null) {
+						can.getSelection().setCouleur(Color.GREEN);
+					}
+					can.setCouleur(Color.GREEN);
+					break;
+				case 3 ://bleu
+					if(can.getSelection() != null) {
+						can.getSelection().setCouleur(Color.BLUE);
+					}
+					can.setCouleur(Color.BLUE);
+					break;
+				case 4 ://rouge
+					if(can.getSelection() != null) {
+						can.getSelection().setCouleur(Color.RED);
+					}
+					can.setCouleur(Color.RED);
+					break;
+				case 5 ://rose
+					if(can.getSelection() != null) {
+						can.getSelection().setCouleur(Color.PINK);
+					}
+					can.setCouleur(Color.PINK);
+					break;
 					
-			case 3 ://bleu
-				if(can.getSelection() != null) {
-					can.getSelection().setCouleur(Color.BLUE);
+				case 6 ://gris
+					if(can.getSelection() != null) {
+						can.getSelection().setCouleur(Color.GRAY);
+					}
+					can.setCouleur(Color.GRAY);
+					break;
+				case 7 ://gris foncé
+					if(can.getSelection() != null) {
+						can.getSelection().setCouleur(Color.DARK_GRAY);
+					}
+					can.setCouleur(Color.DARK_GRAY);
+					break;
+				default ://noir par défaut
+					can.setCouleur(Color.BLACK);
 				}
-				can.setCouleur(Color.BLUE);
-				break;
-			
-			case 4 ://rouge
-				if(can.getSelection() != null) {
-					can.getSelection().setCouleur(Color.RED);
+				combobox.transferFocus();
+				if (can.getSelection() != null) {
+					can.display();
 				}
-				can.setCouleur(Color.RED);
-				break;
-				
-			case 5 ://rose
-				if(can.getSelection() != null) {
-					can.getSelection().setCouleur(Color.PINK);
-				}
-				can.setCouleur(Color.PINK);
-				break;
-				
-			case 6 ://gris
-				if(can.getSelection() != null) {
-					can.getSelection().setCouleur(Color.GRAY);
-				}
-				can.setCouleur(Color.GRAY);
-				break;
-				
-			case 7 ://gris foncé
-				if(can.getSelection() != null) {
-					can.getSelection().setCouleur(Color.DARK_GRAY);
-				}
-				can.setCouleur(Color.DARK_GRAY);
-				break;
-				
-			default ://noir par défaut
-				can.setCouleur(Color.BLACK);
-			}
-			if (can.getSelection() != null) {
-				can.display();
 			}
 		}
 
