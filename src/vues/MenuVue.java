@@ -169,26 +169,21 @@ public class MenuVue extends JPanel implements Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		Caneva caneva = (Caneva) arg0;
-		
 		if(caneva.getSelection() == null) {
 		    this.effacerUn.setEnabled(false);
 		}
 		else {
 		    this.effacerUn.setEnabled(true);
-		    
-		    if(caneva.getSelection().isPlein()) {
+		    if(caneva.isPlein()) {
 		    	this.plein.setBorder(new MatteBorder(3, 3, 3, 3, Color.DARK_GRAY));
-			} 
-		    else {
+			} else {
 		    	this.plein.setBorder(new MatteBorder(1, 1, 1, 1, Color.GRAY));
 		    }
 		}
-		
 		if(caneva.getFigures().isEmpty() == false) {
 		    this.effacer.setEnabled(true);
 		    this.selection.setEnabled(true);
-		}
-		else {
+		} else {
 		    this.effacer.setEnabled(false);
 		    this.selection.setEnabled(true);
 		}

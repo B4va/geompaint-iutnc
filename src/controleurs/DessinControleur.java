@@ -175,6 +175,8 @@ public class DessinControleur {
 			for (int i = figures.size() - 1 ; i >= 0 ; i--) {
 				if (DessinVue.contient(figures.get(i), e.getX(), e.getY())) {
 					c.setSelection(figures.get(i));
+					c.setPlein(figures.get(i).isPlein());
+					c.setCouleur(figures.get(i).getCouleur());
 					break;
 				}
 			}
