@@ -100,7 +100,7 @@ import vues.MenuVue;
 						int n = JOptionPane.showConfirmDialog(new JOptionPane(), "Tout effacer ?", null, JOptionPane.YES_NO_OPTION);
 						//oui = 0; non = 1
 						if (n == 0) {
-							can.clearFigures();
+							can.effacerFigures();
 							can.setForme(null);
 							can.setSelection(null);
 							can.display();
@@ -109,7 +109,7 @@ import vues.MenuVue;
 					break;
 				
 				case 8:
-					can.clearSelecFigures();
+					can.effacerFiguresSel();
 					can.display();
 					break;
 			}

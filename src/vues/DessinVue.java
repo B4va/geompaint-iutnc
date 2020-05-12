@@ -79,7 +79,7 @@ public class DessinVue extends JPanel implements Observer {
 			
 			// affichage des points en construction
 			for (UnPoint p : caneva.getPointsConstruction()) {
-				tracerPointConstruction(p, g);
+				tracerPointsConstruction(p, g);
 			}
 		}
 	}
@@ -146,7 +146,7 @@ public class DessinVue extends JPanel implements Observer {
 	 * @param p point à tracer
 	 * @param g outil graphique
 	 */
-	private void tracerPointConstruction(UnPoint p, Graphics g) {
+	private void tracerPointsConstruction(UnPoint p, Graphics g) {
 		g.setColor(Color.GRAY);
 		g.fillRect(
 				p.getX() - TAILLE_POINTS / 2,

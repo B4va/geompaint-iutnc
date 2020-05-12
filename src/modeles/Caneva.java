@@ -60,7 +60,7 @@ public class Caneva extends Observable {
 	/**
 	 * Efface la figure séléctionnée
 	 */
-	public void clearSelecFigures() {
+	public void effacerFiguresSel() {
 		int index = this.figures.indexOf(this.selection);
 		this.figures.remove(index);
 		this.selection = null;
@@ -69,7 +69,7 @@ public class Caneva extends Observable {
 	/**
 	 * Efface toutes les figures de la liste
 	 */
-	public void clearFigures() {
+	public void effacerFigures() {
 		figures = new ArrayList<FigureGeom>();
 	}
 	
